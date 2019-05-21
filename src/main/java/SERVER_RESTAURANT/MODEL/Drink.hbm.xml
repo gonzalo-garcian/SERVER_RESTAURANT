@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 21-may-2019 12:53:04 by Hibernate Tools 5.1.10.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="RESTAURANT" dynamic-insert="false" dynamic-update="false" mutable="true" name="SERVER_RESTAURANT.MODEL.Drink" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="drink">
+        <id name="idItemDrink" type="int">
+            <column name="id_item_drink"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="price" optimistic-lock="true" type="float" unique="false">
+            <column name="price" not-null="true" precision="12" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="nameDrink" optimistic-lock="true" type="string" unique="false">
+            <column name="name_drink" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="quantityStock" optimistic-lock="true" type="int" unique="false">
+            <column name="quantity_stock" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="statusDrink" optimistic-lock="true" type="int" unique="false">
+            <column name="status_drink" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="descriptionDrink" optimistic-lock="true" type="string" unique="false">
+            <column name="description_drink"/>
+        </property>
+    </class>
+</hibernate-mapping>

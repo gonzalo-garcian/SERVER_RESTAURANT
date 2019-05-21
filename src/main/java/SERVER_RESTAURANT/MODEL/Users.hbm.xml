@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated 21-may-2019 12:53:04 by Hibernate Tools 5.1.10.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class catalog="RESTAURANT" dynamic-insert="false" dynamic-update="false" mutable="true" name="SERVER_RESTAURANT.MODEL.Users" optimistic-lock="version" polymorphism="implicit" select-before-update="false" table="users">
+        <id name="dni" type="string">
+            <column length="9" name="dni"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="firstName" optimistic-lock="true" type="string" unique="false">
+            <column name="first_name" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="surnames" optimistic-lock="true" type="string" unique="false">
+            <column name="surnames" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="phoneNumber" optimistic-lock="true" type="string" unique="false">
+            <column length="9" name="phone_number"/>
+        </property>
+        <property generated="never" lazy="false" name="accessKey" optimistic-lock="true" type="string" unique="false">
+            <column name="access_key" not-null="true"/>
+        </property>
+        <property generated="never" lazy="false" name="kind" optimistic-lock="true" type="int" unique="false">
+            <column name="kind" not-null="true"/>
+        </property>
+    </class>
+</hibernate-mapping>
