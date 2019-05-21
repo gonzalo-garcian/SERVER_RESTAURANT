@@ -28,6 +28,7 @@ public class Server extends Thread {
 			clientIP = sk.getInetAddress().getHostAddress();
 			System.out.println("Conectado el cliente: " + clientIP);
 
+			
 
 		} catch (IOException ex) {
 			
