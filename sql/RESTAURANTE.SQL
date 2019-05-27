@@ -89,7 +89,9 @@ ALTER TABLE HASDRINK
 ADD FOREIGN KEY (id_ticket) REFERENCES TICKET(id_ticket),
 ADD FOREIGN KEY (id_item_drink) REFERENCES DRINK(id_item_drink);
 
-INSERT INTO USERS VALUES( "45992171Z", "Gonzalo", "García Navarro", "", "GonzaloPass" , 3); 
+INSERT INTO USERS VALUES( "45992171Z", "Gonzalo", "García Navarro", "", "GonzaloPass" , 3);
+INSERT INTO USERS VALUES( "45986926J", "Kevin", "Sánchez González", "", "KevinPass" , 3);
+INSERT INTO USERS VALUES( "47740738Y", "Óscar", "González García", "", "ÓscarPass" , 3);
 
 
     

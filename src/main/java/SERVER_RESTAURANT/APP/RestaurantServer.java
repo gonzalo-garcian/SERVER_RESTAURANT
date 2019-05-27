@@ -16,11 +16,10 @@ public class RestaurantServer {
 	}
 
 	public static void main(String[] args) {
+		
 		try {
 			ServerSocket ssk = new ServerSocket(20002);
-			System.out.println("Servidor iniciado");
-			
-			opcionRead();
+			System.out.println("Server online");
 
 			while (true) {
 				Socket sk = ssk.accept();
@@ -31,18 +30,5 @@ public class RestaurantServer {
 
 			ex.printStackTrace();
 		}
-	}
-	
-	public static void opcionRead() {
-		
-		Consola consola=Consola.getSingletonInstance();
-		UsersDAO usersDAO = new UsersDAO();
-		List<Users> usersList = usersDAO.select();
-		
-		consola.escribirSL("Users list (" + usersList.size() + ")");
-		
-	    for (Users user : usersList) {
-	    	consola.escribirSL("[DNI : " + user.getDni() + " Name : " + user.getFirstName() + " Surnames : " + user.getSurnames() + "]");
-	    }
 	}
 }
