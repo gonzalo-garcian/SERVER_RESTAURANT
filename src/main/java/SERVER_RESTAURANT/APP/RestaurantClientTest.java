@@ -15,14 +15,14 @@ public class RestaurantClientTest {
 	public static void main(String[] args) {
 		
 		try {
-			String ip = "192.168.12.200";
+			String ip = "192.168.1.109";
 			sk = new Socket(ip, 20002);
 			System.out.println("Establecida la conexión con " + ip);
 			dis = new DataInputStream(sk.getInputStream());
 			dos = new DataOutputStream(sk.getOutputStream());
 			
 			//Aquí en el cliente de android serían getText de los EditText y se enviarán cifrados.
-			dos.writeUTF("45992171G");
+			dos.writeUTF("45992171Z");
 			dos.writeUTF("GonzaloPass");
 			
 			boolean validatedLogin = dis.readBoolean();
@@ -38,7 +38,10 @@ public class RestaurantClientTest {
 				System.out.println("Login fallido");
 				//Se queda en la Activity y muestra un mensaje de Error.
 			}
-			
+                        
+                        byte[] encriptado = null;
+                        System.out.println(dis.read(encriptado));
+                        
 		} catch (IOException ex) {
 
 		}
