@@ -30,7 +30,7 @@ public class Server extends Thread {
 
     private static Cipher rsa;
     PrivateKey privateKey;
-    
+
     Socket sk;
     String clientIP;
     byte[] encriptado;
@@ -70,7 +70,7 @@ public class Server extends Thread {
             dis = new DataInputStream(sk.getInputStream());
             dos = new DataOutputStream(sk.getOutputStream());
             oos = new ObjectOutputStream(sk.getOutputStream());
-            
+            Cryptography crypto = new Cryptography();
             PublicKey publicKey = null;
 
             publicKey = loadPublicKey("publickey.dat");
@@ -83,9 +83,9 @@ public class Server extends Thread {
             oos.writeObject(publicKey);
             publicKey.toString();
 
-            String dni = decryptMessage();
-            String password = decryptMessage();
-            
+            String dni = crypto.decryptMessage(receiveMessage());
+            String password = crypto.decryptMessage(receiveMessage());
+
             if (dni == null || password == null) {
 
                 dos.writeInt(3);
@@ -136,33 +136,8 @@ public class Server extends Thread {
         return false;
 
     }
+
     
-    private String decryptMessage() {
-            try {
-                rsa.init(Cipher.DECRYPT_MODE, privateKey);
-                byte[] message = null;
-                int length = dis.readInt();
-                if (length > 0) {
-                    message = new byte[length];
-                    dis.readFully(message, 0, message.length);
-                }
-                byte[] bytesDesencriptados = rsa.doFinal(message);
-                String textoDesencripado = new String(bytesDesencriptados);
-                System.out.println(textoDesencripado);
-                return textoDesencripado;
-            } catch (InvalidKeyException e) {
-                e.printStackTrace();
-            } catch (BadPaddingException e) {
-                e.printStackTrace();
-            } catch (IllegalBlockSizeException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            return null;
-
-        }
-
     private static void saveKey(Key key, String fileName) throws Exception {
         byte[] publicKeyBytes = key.getEncoded();
         FileOutputStream fos = new FileOutputStream(fileName);
@@ -194,5 +169,20 @@ public class Server extends Thread {
         KeySpec keySpec = new X509EncodedKeySpec(bytes);
         PublicKey keyFromBytes = keyFactory.generatePublic(keySpec);
         return keyFromBytes;
+    }
+
+    private byte[] receiveMessage() throws Exception {
+        byte[] message = null;
+        int length = dis.readInt();
+        if (length > 0) {
+            message = new byte[length];
+            dis.readFully(message, 0, message.length);
+        }
+        return message;
+
+    }
+    
+    private void sendMessage(byte[] message) throws Exception{
+        dos.write(message);
     }
 }
