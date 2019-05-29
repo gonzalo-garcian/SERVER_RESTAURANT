@@ -1,5 +1,5 @@
 package SERVER_RESTAURANT.MODEL;
-// Generated 21-may-2019 12:53:03 by Hibernate Tools 5.1.10.Final
+// Generated 29-may-2019 16:28:58 by Hibernate Tools 5.1.10.Final
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;

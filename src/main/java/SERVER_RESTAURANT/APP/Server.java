@@ -1,5 +1,6 @@
 package SERVER_RESTAURANT.APP;
 
+import SERVER_RESTAURANT.DAO.DishDAO;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -7,6 +8,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import SERVER_RESTAURANT.DAO.UsersDAO;
+import SERVER_RESTAURANT.MODEL.Dish;
 import SERVER_RESTAURANT.MODEL.Users;
 import SERVER_RESTAURANT.VIEW.Consola;
 import java.io.FileInputStream;
@@ -73,6 +75,8 @@ public class Server extends Thread {
             Cryptography crypto = new Cryptography();
             PublicKey publicKey = null;
 
+            System.out.println(seeDish(1));
+            
             publicKey = loadPublicKey("publickey.dat");
             privateKey = loadPrivateKey("privatekey.dat");
             rsa = Cipher.getInstance("RSA/ECB/PKCS1Padding");
@@ -135,6 +139,16 @@ public class Server extends Thread {
 
         return false;
 
+    }
+    
+    private String seeDish(int idItemDish){
+    
+        Dish dish = new Dish();
+        DishDAO dishDAO = new DishDAO();
+        
+        dish = dishDAO.select(idItemDish);
+        
+        return "Nombre : " + dish.getNameDish() + " Descripción: " + dish.getDescriptionDish();
     }
 
     

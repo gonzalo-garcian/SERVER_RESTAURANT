@@ -73,6 +73,7 @@ CREATE TABLE HASDRINK(
 
 ALTER TABLE DISH
 ADD FOREIGN KEY (dni_kitchen) REFERENCES USERS(dni);
+ALTER TABLE DISH AUTO_INCREMENT=0;
 
 ALTER TABLE ATTEND
 ADD FOREIGN KEY (dni_waiter) REFERENCES USERS(dni),
@@ -89,9 +90,12 @@ ALTER TABLE HASDRINK
 ADD FOREIGN KEY (id_ticket) REFERENCES TICKET(id_ticket),
 ADD FOREIGN KEY (id_item_drink) REFERENCES DRINK(id_item_drink);
 
-INSERT INTO USERS VALUES( "45992171Z", "Gonzalo", "García Navarro", "", "GonzaloPass" , 3);
-INSERT INTO USERS VALUES( "45986926J", "Kevin", "Sánchez González", "", "KevinPass" , 3);
-INSERT INTO USERS VALUES( "47740738Y", "Óscar", "González García", "", "ÓscarPass" , 3);
+#USERS Cliente 1 , Cocina 2, Camarero 3, Admin 4 , va por orden de permisos.
+INSERT INTO USERS VALUES( "45992171Z", "Gonzalo", "García Navarro", "", "GonzaloPass" , 4);
+INSERT INTO USERS VALUES( "45986926J", "Kevin", "Sánchez González", "", "KevinPass" , 4);
+INSERT INTO USERS VALUES( "47740738Y", "Óscar", "González García", "", "ÓscarPass" , 4);
+INSERT INTO USERS VALUES( "43721530G", "Juan", "González García", "", "JuanPass" , 2);
 
-
-    
+#DISH
+INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("4.50", "Macarrones con tomate", 6, "Pasta con tomate y carne", "43721530G");
+INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("4.50", "Mixta", 2, "Ensalada y embutido", "43721530G");
