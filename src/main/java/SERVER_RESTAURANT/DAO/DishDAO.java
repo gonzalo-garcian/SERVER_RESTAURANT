@@ -34,4 +34,18 @@ public class DishDAO {
 		}
 		return dish;
 	}
+    
+    public List<Dish> select() {
+		List<Dish> listEntrenador = null;
+		try {		
+			Session session = HibernateUtil.getSessionFactory().openSession();
+	        Query q = session.createQuery("From Dish");        
+	        listEntrenador = q.list();
+	        session.close();
+		} 
+		catch (Exception e) {
+			e.printStackTrace();			
+		}
+		return listEntrenador;
+	}
 }

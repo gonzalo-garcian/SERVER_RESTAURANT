@@ -74,8 +74,6 @@ public class Server extends Thread {
             oos = new ObjectOutputStream(sk.getOutputStream());
             Cryptography crypto = new Cryptography();
             PublicKey publicKey = null;
-
-            System.out.println(seeDish(1));
             
             publicKey = loadPublicKey("publickey.dat");
             privateKey = loadPrivateKey("privatekey.dat");
@@ -87,22 +85,32 @@ public class Server extends Thread {
             oos.writeObject(publicKey);
             publicKey.toString();
 
-            String dni = crypto.decryptMessage(receiveMessage());
-            String password = crypto.decryptMessage(receiveMessage());
+            int option = dis.readInt();
+            
+            if(option == 1) {
+            	
+            	String dni = crypto.decryptMessage(receiveMessage());
+                String password = crypto.decryptMessage(receiveMessage());
 
-            if (dni == null || password == null) {
+                if (dni == null || password == null) {
 
-                dos.writeInt(3);
-            } else {
-
-                if (validateLogin(dni, password)) {
-
-                    dos.writeInt(1);
+                    dos.writeInt(3);
                 } else {
 
-                    dos.writeInt(2);
+                    if (validateLogin(dni, password)) {
+
+                        dos.writeInt(1);
+                    } else {
+
+                        dos.writeInt(2);
+                    }
                 }
             }
+            if(option == 2) {
+            	
+            	
+            }
+            
 
         } catch (IOException ex) {
 
