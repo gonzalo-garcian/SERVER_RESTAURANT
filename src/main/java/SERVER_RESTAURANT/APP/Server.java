@@ -16,17 +16,20 @@ import java.io.FileOutputStream;
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.KeyFactory;
+import java.security.NoSuchAlgorithmException;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.KeySpec;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.Cipher;
 import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 public class Server extends Thread {
 
@@ -108,9 +111,32 @@ public class Server extends Thread {
             }
             if(option == 2) {
             	
+            	//Enviar objetos con un for .
+            	System.out.print("Estoy en la opcion 2");
+            	
+            	List<Dish> dishList = getDishList();
+            	
+            	System.out.print(dishList.size());
+            	dos.writeInt(2);
+            	
+            	for(int i = 0; i < dishList.size(); i++) {
+            		
+            		dos.writeUTF(dishList.get(i).getNameDish());
+                    dos.writeInt(dishList.get(i).getIdItemDish());
+                    dos.writeFloat(dishList.get(i).getPrice());
+                    dos.writeInt(dishList.get(i).getQuantityStock());
+                    dos.writeInt(dishList.get(i).getStatusDish());
+                    dos.writeUTF(dishList.get(i).getDescriptionDish());
+                    dos.writeUTF(dishList.get(i).getDniKitchen());
+
+            	}
             	
             }
             
+            sk.close();
+            dis.close();
+            dos.close();
+            oos.close();
 
         } catch (IOException ex) {
 
@@ -149,14 +175,17 @@ public class Server extends Thread {
 
     }
     
-    private String seeDish(int idItemDish){
-    
-        Dish dish = new Dish();
+    private List<Dish> getDishList(){
+    	Consola consola=Consola.getSingletonInstance();
         DishDAO dishDAO = new DishDAO();
+        List<Dish> dishList = dishDAO.select();
         
-        dish = dishDAO.select(idItemDish);
+		consola.escribirSL("Listado de pokemons (" + dishList.size() + ")");
+	    for (Dish dish : dishList) {
+	    	consola.escribirSL("[Nombre: " + dish.getNameDish() + ", aspecto: " + dish.getDescriptionDish() + "]");
+	    }
         
-        return "Nombre : " + dish.getNameDish() + " Descripción: " + dish.getDescriptionDish();
+        return dishList;
     }
 
     
@@ -206,5 +235,29 @@ public class Server extends Thread {
     
     private void sendMessage(byte[] message) throws Exception{
         dos.write(message);
+    }
+    
+    private void sendEncrypted(String message) {
+
+        try {
+            rsa = Cipher.getInstance("RSA/ECB/PKCS1Padding");
+            rsa.init(Cipher.ENCRYPT_MODE, privateKey);
+            byte[] encriptado = rsa.doFinal(message.getBytes());
+            dos.writeInt(encriptado.length);
+            dos.write(encriptado);
+
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        } catch (NoSuchPaddingException e) {
+            e.printStackTrace();
+        } catch (BadPaddingException e) {
+            e.printStackTrace();
+        } catch (IllegalBlockSizeException e) {
+            e.printStackTrace();
+        } catch (InvalidKeyException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -95,6 +95,7 @@ INSERT INTO USERS VALUES( "45992171Z", "Gonzalo", "García Navarro", "", "Gonzal
 INSERT INTO USERS VALUES( "45986926J", "Kevin", "Sánchez González", "", "KevinPass" , 4);
 INSERT INTO USERS VALUES( "47740738Y", "Óscar", "González García", "", "ÓscarPass" , 4);
 INSERT INTO USERS VALUES( "43721530G", "Juan", "González García", "", "JuanPass" , 2);
+INSERT INTO USERS VALUES( "1", "Gonzalo", "García Navarro", "", "1" , 4);
 
 #DISH
 INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("4.50", "Macarrones con tomate", 6, "Pasta con tomate y carne", "43721530G");
