@@ -15,7 +15,7 @@ public class RestaurantClientTest {
 	public static void main(String[] args) {
 		
 		try {
-			String ip = "192.168.1.109";
+			String ip = "192.168.137.1";
 			sk = new Socket(ip, 20002);
 			System.out.println("Establecida la conexión con " + ip);
 			dis = new DataInputStream(sk.getInputStream());
