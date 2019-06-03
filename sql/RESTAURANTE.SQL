@@ -98,6 +98,7 @@ INSERT INTO USERS VALUES( "43721530G", "Juan", "González García", "", "JuanPas
 INSERT INTO USERS VALUES( "1", "Gonzalo", "García Navarro", "", "1" , 4);
 
 #DISH
+#STARTERS
 INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("3.50","Edamame",200,"Soja verda","43721530G");
 INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("3.80","Yaki edamame",200,"Soja verda a la plantxa","43721530G");
 INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("3.50","Kimchi",200,"Verdures fermentades picants","43721530G");
@@ -115,18 +116,32 @@ INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitche
 INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("8.30","Ánemones fregides",200," ","43721530G");
 INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("6.30","Croqueta d'alvocat",200,"Soja verda","43721530G");
 INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("8.30","Tartar de tonyina i alvocat",200,"","43721530G");
-INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("5.50","Edamame",200,"Soja verda","43721530G");
+#SPECIAL
+INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("14.90","Tataki de tonyina arrebossat amb Panko",200,"","43721530G");
+INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("10.90","Teriyaki de pollastre",200,"","43721530G");
+INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("13.50","Shogayaki de secret ibèric amb salsa de gingebre",200,"","43721530G");
+INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("21.50","Entrecot tipus Kobe 250gr",200,"","43721530G");
+INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("13.90","Tonkatsu de llom",200,"","43721530G");
 #DRINK
 INSERT INTO DRINK (price, name_drink, quantity_stock, description_drink) VALUES ("21.00","Karatanba Honjozo (Hyogo)",200,"Sake - ampolla");
-INSERT INTO DRINK (price, name_drink, quantity_stock, description_drink) VALUES ("30.00","Fukuju Ginjo (Hyogo)",200,"Sake");
+INSERT INTO DRINK (price, name_drink, quantity_stock, description_drink) VALUES ("30.00","Fukuju Ginjo (Hyogo)",200," ");
 INSERT INTO DRINK (price, name_drink, quantity_stock, description_drink) VALUES ("33.00","Choubee Daiginjo (Hyogo)",200,"Sake");
 INSERT INTO DRINK (price, name_drink, quantity_stock, description_drink) VALUES ("4.50","Ichiko Cebada",200,"Shochu");
 INSERT INTO DRINK (price, name_drink, quantity_stock, description_drink) VALUES ("4.80","Kaido Boniato",200,"Shochu");
 INSERT INTO DRINK (price, name_drink, quantity_stock, description_drink) VALUES ("3.40","Choya Umeshu",200,"Umeshu");
 INSERT INTO DRINK (price, name_drink, quantity_stock, description_drink) VALUES ("7.00","Whisky Hibiki 12 anys",200,"Xupito");
+#DESERTS
+INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("3.50","Dorayaki",200,"","43721530G");
+INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("3.50","Flam de sèsam negre",200,"","43721530G");
+INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("3.50","Flam de te verd",200,"","43721530G");
+INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("3.50","Cheese cake amb ginebre",200,"","43721530G");
+INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("3.50","Coulant de xocolata",200,"","43721530G");
+INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("3.50","Gelatina de Sake amb llima",200,"","43721530G");
+INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("3.50","Trufas Japoneses de Wasabi i Sake",200,"","43721530G");
+INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("3.50","Sorbet Llimona de Gandía",200,"","43721530G");
+INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("3.50","Gelat de Xocolata Belga",200,"","43721530G");
 
-select * from drink;
-select * from dish;
+
 insert into dinner_table(location_table, number_diners_table) VALUES ("Interior", 4);
 insert into dinner_table(location_table, number_diners_table) VALUES ("Interior", 4);
 insert into dinner_table(location_table, number_diners_table) VALUES ("Interior", 2);
@@ -135,28 +150,15 @@ insert into dinner_table(location_table, number_diners_table) VALUES ("Terraza",
 insert into dinner_table(location_table, number_diners_table) VALUES ("Terraza", 4);
 insert into dinner_table(location_table, number_diners_table) VALUES ("Terraza", 2);
 insert into dinner_table(location_table, number_diners_table) VALUES ("Terraza", 2);
+
 insert into ticket(total_price, id_table) VALUES (50,1); 
+insert into ticket(total_price, id_table) VALUES (80,2); 
+insert into ticket(total_price, id_table) VALUES (120,1); 
+insert into ticket(total_price, id_table) VALUES (30,5); 
+
+insert into hasdish values(4,3,2);
+insert into hasdish value(2,4,4);
+insert into hasdrink values(2,4,5);
+
 insert into hasdish values(1,1,1);
 insert into hasdish value(1,2,1);
-
-insert into hasdrink values(1,1,1);
-update hasdish set quantity_item = 4 where id_ticket = 1 and id_item_dish = 1;
-select * from hasdish;
-
-
-select * from hasdish INNER JOIN hasdrink where hasdish.id_ticket = hasdrink.id_ticket;
-select * from dish;
-
-
-
-
-CREATE TABLE HASDISH(
-	id_ticket INT(3),
-	id_item_dish INT(3),
-	quantity_item INT(2),
-    PRIMARY KEY(id_ticket,id_item_dish)
-);
-select * from users;
-
-
-select * from ticket;

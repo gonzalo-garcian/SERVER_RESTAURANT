@@ -12,6 +12,6 @@
         <mapping class="SERVER_RESTAURANT.MODEL.Users" />
         <mapping class="SERVER_RESTAURANT.MODEL.Dish" />
         <mapping class="SERVER_RESTAURANT.MODEL.Ticket" />
-        <mapping class="SERVER_RESTAURANT.MODEL.DinnerTable" />
+        <mapping class="SERVER_RESTAURANT.MODEL.DinnerTable"/>
     </session-factory>
 </hibernate-configuration>
