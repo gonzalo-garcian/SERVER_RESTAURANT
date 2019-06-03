@@ -194,7 +194,6 @@ public class Server extends Thread {
 
 				return true;
 			}
-
 		}
 
 		return false;
