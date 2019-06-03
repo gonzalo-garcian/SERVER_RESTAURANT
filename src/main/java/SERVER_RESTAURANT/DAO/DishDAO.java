@@ -48,4 +48,36 @@ public class DishDAO {
 		}
 		return listEntrenador;
 	}
+    
+    public void update(Dish dish) {
+		try {		
+			Session session = HibernateUtil.getSessionFactory().openSession();
+	        session.beginTransaction(); 
+	        session.update(dish);
+	        session.getTransaction().commit();
+	        session.close();
+		} 
+		catch (Exception e) {
+			e.printStackTrace();			
+		}
+	}
+    
+    public boolean exists(int idItemDish) {
+		List<Dish> usersList = null;
+		boolean exists = false;
+		try {		
+			Session session = HibernateUtil.getSessionFactory().openSession();
+	        Query q = session.createQuery("From Dish d where d.idItemDish=:idItemDish");
+	        q.setParameter("idItemDish", idItemDish);
+	        usersList = q.list();
+	        if (usersList.size()!=0) {
+	        	exists = true;
+	        }
+	        session.close();
+		} 
+		catch (Exception e) {
+			e.printStackTrace();			
+		}
+		return exists;
+	}
 }

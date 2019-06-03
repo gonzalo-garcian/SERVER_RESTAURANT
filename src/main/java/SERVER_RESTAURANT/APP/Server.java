@@ -6,6 +6,7 @@ import SERVER_RESTAURANT.DAO.TicketDAO;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 
@@ -148,9 +149,13 @@ public class Server extends Thread {
 					dos.writeInt(ticketList.get(i).getIdTicket());
 					dos.writeFloat(ticketList.get(i).getTotalPrice());
 					dos.writeInt(ticketList.get(i).getIdTable());
-					
-
 				}
+			}
+			if (option == 4) {
+				
+				int idItemDish = dis.readInt();
+				int quantityStock = dis.readInt();
+				updateDish(idItemDish,quantityStock);
 
 			}
 
@@ -209,17 +214,32 @@ public class Server extends Thread {
 		return dishList;
 
 	}
-	
-	private List<Ticket> getTicketList(){
+
+	private List<Ticket> getTicketList() {
 		Consola consola = Consola.getSingletonInstance();
 		TicketDAO ticketDAO = new TicketDAO();
 		List<Ticket> ticketList = ticketDAO.select();
-		
+
 		consola.escribirSL("Lista Tickets : " + ticketList.size());
 		for (Ticket ticket : ticketList) {
-			consola.escribirSL("ID Ticket : " + ticket.getIdTicket() + "/n Precio Ticket :  " + ticket.getTotalPrice() + "/n ID Mesa : " + ticket.getIdTable());
+			consola.escribirSL("ID Ticket : " + ticket.getIdTicket() + "/n Precio Ticket :  " + ticket.getTotalPrice()
+					+ "/n ID Mesa : " + ticket.getIdTable());
 		}
 		return ticketList;
+	}
+
+	private void updateDish(int idItemDish, int quantityStock) {
+
+		DishDAO dishDAO = new DishDAO();
+		Dish dish = new Dish();
+
+		if (dishDAO.exists(idItemDish)) {
+
+			dish = dishDAO.select(idItemDish);
+			dish.setQuantityStock(quantityStock);
+			dishDAO.update(dish);
+		}
+		
 	}
 
 	private static void saveKey(Key key, String fileName) throws Exception {
