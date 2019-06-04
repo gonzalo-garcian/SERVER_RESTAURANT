@@ -234,6 +234,7 @@ public class Server extends Thread {
                 deleteDrink(idItemDrink);
             }
             if (option == 12){
+                //devuelve una lista con todos los usuarios
                 List<Users> usersList = selectAllUsers();
                 if (usersList != null){
                     System.out.println(usersList.size());
@@ -248,6 +249,12 @@ public class Server extends Thread {
                     }
                 }
             }
+            if (option ==13){
+                //elimina un usuario de la BBDD
+                String dniUser = dis.readUTF();
+                deleteUser(dniUser);
+            }
+            
 
             sk.close();
             dis.close();
