@@ -1,84 +1,84 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <groupId>SERVER_RESTAURANT</groupId>
-  <artifactId>SERVER_RESTAURANT</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  <packaging>jar</packaging>
+    <groupId>SERVER_RESTAURANT</groupId>
+    <artifactId>SERVER_RESTAURANT</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-  <name>SERVER_RESTAURANT</name>
-  <url>http://maven.apache.org</url>
+    <name>SERVER_RESTAURANT</name>
+    <url>http://maven.apache.org</url>
   
-  <developers>
-	<developer>		
-		<id>gonzalo.garcia@copernic.cat</id>
-		<name>Gonzalo García Navarro</name>
-		<email>gonzalo.garcia@copernic.cat</email>
-		<roles>
-			<role>Alumno DAM2A</role>
-			<role>Programmer</role>
-		</roles>
-	</developer>
+    <developers>
+        <developer>		
+            <id>gonzalo.garcia@copernic.cat</id>
+            <name>Gonzalo García Navarro</name>
+            <email>gonzalo.garcia@copernic.cat</email>
+            <roles>
+                <role>Alumno DAM2A</role>
+                <role>Programmer</role>
+            </roles>
+        </developer>
 	
-	<developer>
-		<id>developer.ogg@gmail.com</id>
-		<name>Óscar Gonzalez García</name>
-		<email>developer.ogg@gmail.com</email>
-		<roles>
-			<role>Alumno DAM2A</role>
-			<role>Programmer</role>
-		</roles>
-	</developer>
+        <developer>
+            <id>developer.ogg@gmail.com</id>
+            <name>Óscar Gonzalez García</name>
+            <email>developer.ogg@gmail.com</email>
+            <roles>
+                <role>Alumno DAM2A</role>
+                <role>Programmer</role>
+            </roles>
+        </developer>
 	
-	<developer>
-		<id>ksangon98@gmail.com</id>
-		<name>Kevin Sánchez Gonzalez</name>
-		<email>ksangon98@gmail.com</email>
-		<roles>
-			<role>Alumno DAM2A</role>
-			<role>Programmer</role>
-		</roles>
-	</developer>
-</developers>
+        <developer>
+            <id>ksangon98@gmail.com</id>
+            <name>Kevin Sánchez Gonzalez</name>
+            <email>ksangon98@gmail.com</email>
+            <roles>
+                <role>Alumno DAM2A</role>
+                <role>Programmer</role>
+            </roles>
+        </developer>
+    </developers>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
-      <scope>test</scope>
-    </dependency>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>3.8.1</version>
+            <scope>test</scope>
+        </dependency>
     
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
-      <version>5.1.44</version>
-    </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>5.1.44</version>
+        </dependency>
     
-    <!-- Hibernate framework -->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-core</artifactId>
-      <version>5.1.0.Final</version>
-    </dependency>
+        <!-- Hibernate framework -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.1.0.Final</version>
+        </dependency>
     
-    <!-- http://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-entitymanager</artifactId>
-      <version>5.1.0.Final</version>
-    </dependency>
+        <!-- http://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>5.1.0.Final</version>
+        </dependency>
     
-    <!-- http://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0 -->
-    <dependency>
-      <groupId>org.hibernate</groupId>
-      <artifactId>hibernate-c3p0</artifactId>
-      <version>5.1.0.Final</version>
-    </dependency>
-  </dependencies>
+        <!-- http://mvnrepository.com/artifact/org.hibernate/hibernate-c3p0 -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-c3p0</artifactId>
+            <version>5.1.0.Final</version>
+        </dependency>
+    </dependencies>
 </project>

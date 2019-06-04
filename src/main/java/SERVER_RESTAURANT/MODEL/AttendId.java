@@ -10,55 +10,58 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class AttendId implements java.io.Serializable {
 
-	private int idTable;
-	private String dniWaiter;
+    private int idTable;
+    private String dniWaiter;
 
-	public AttendId() {
-	}
+    public AttendId() {
+    }
 
-	public AttendId(int idTable, String dniWaiter) {
-		this.idTable = idTable;
-		this.dniWaiter = dniWaiter;
-	}
+    public AttendId(int idTable, String dniWaiter) {
+        this.idTable = idTable;
+        this.dniWaiter = dniWaiter;
+    }
 
-	@Column(name = "id_table", nullable = false)
-	public int getIdTable() {
-		return this.idTable;
-	}
+    @Column(name = "id_table", nullable = false)
+    public int getIdTable() {
+        return this.idTable;
+    }
 
-	public void setIdTable(int idTable) {
-		this.idTable = idTable;
-	}
+    public void setIdTable(int idTable) {
+        this.idTable = idTable;
+    }
 
-	@Column(name = "dni_waiter", nullable = false, length = 9)
-	public String getDniWaiter() {
-		return this.dniWaiter;
-	}
+    @Column(name = "dni_waiter", nullable = false, length = 9)
+    public String getDniWaiter() {
+        return this.dniWaiter;
+    }
 
-	public void setDniWaiter(String dniWaiter) {
-		this.dniWaiter = dniWaiter;
-	}
+    public void setDniWaiter(String dniWaiter) {
+        this.dniWaiter = dniWaiter;
+    }
 
-	public boolean equals(Object other) {
-		if ((this == other))
-			return true;
-		if ((other == null))
-			return false;
-		if (!(other instanceof AttendId))
-			return false;
-		AttendId castOther = (AttendId) other;
+    public boolean equals(Object other) {
+        if ((this == other)) {
+            return true;
+        }
+        if ((other == null)) {
+            return false;
+        }
+        if (!(other instanceof AttendId)) {
+            return false;
+        }
+        AttendId castOther = (AttendId) other;
 
-		return (this.getIdTable() == castOther.getIdTable())
-				&& ((this.getDniWaiter() == castOther.getDniWaiter()) || (this.getDniWaiter() != null
-						&& castOther.getDniWaiter() != null && this.getDniWaiter().equals(castOther.getDniWaiter())));
-	}
+        return (this.getIdTable() == castOther.getIdTable())
+                && ((this.getDniWaiter() == castOther.getDniWaiter()) || (this.getDniWaiter() != null
+                && castOther.getDniWaiter() != null && this.getDniWaiter().equals(castOther.getDniWaiter())));
+    }
 
-	public int hashCode() {
-		int result = 17;
+    public int hashCode() {
+        int result = 17;
 
-		result = 37 * result + this.getIdTable();
-		result = 37 * result + (getDniWaiter() == null ? 0 : this.getDniWaiter().hashCode());
-		return result;
-	}
+        result = 37 * result + this.getIdTable();
+        result = 37 * result + (getDniWaiter() == null ? 0 : this.getDniWaiter().hashCode());
+        return result;
+    }
 
 }

@@ -189,7 +189,7 @@ public class Server extends Thread {
             }
             if (option == 8) {
 
-                 // Enviar objetos con un for .
+                // Enviar objetos con un for .
                 System.out.print("Estoy en la opcion 8");
 
                 List<Drink> drinkList = getDrinkList();
@@ -207,9 +207,9 @@ public class Server extends Thread {
                     dos.writeUTF(drinkList.get(i).getDescriptionDrink());
 
                 }
-                
+
             }
-            if(option == 10){
+            if (option == 10) {
                 int idItemDrink = dis.readInt();
                 int quantityStock = dis.readInt();
                 updateDrink(idItemDrink, quantityStock);
@@ -354,9 +354,7 @@ public class Server extends Thread {
     }
 
 //TODO LO QUE ES DE DISH ACABA
-    
- //
-    
+    //
     private List<Drink> getDrinkList() {
         Consola consola = Consola.getSingletonInstance();
         DrinkDAO drinkDAO = new DrinkDAO();
@@ -368,7 +366,7 @@ public class Server extends Thread {
         }
         return drinkList;
     }
-    
+
     private void updateDrink(int idItemDrink, int quantityStock) {
 
         DrinkDAO drinkDAO = new DrinkDAO();
@@ -382,7 +380,7 @@ public class Server extends Thread {
         }
 
     }
-    
+
     private static void saveKey(Key key, String fileName) throws Exception {
         byte[] publicKeyBytes = key.getEncoded();
         FileOutputStream fos = new FileOutputStream(fileName);

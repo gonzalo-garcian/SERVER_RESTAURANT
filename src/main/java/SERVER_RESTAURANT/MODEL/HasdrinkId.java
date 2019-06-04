@@ -10,65 +10,68 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class HasdrinkId implements java.io.Serializable {
 
-	private int idTicket;
-	private int idItemDrink;
-        private int quantityItem;
+    private int idTicket;
+    private int idItemDrink;
+    private int quantityItem;
 
-	public HasdrinkId() {
-	}
+    public HasdrinkId() {
+    }
 
-	public HasdrinkId(int idTicket, int idItemDrink, int quantityItem) {
-		this.idTicket = idTicket;
-		this.idItemDrink = idItemDrink;
-                this.quantityItem = quantityItem;
-	}
+    public HasdrinkId(int idTicket, int idItemDrink, int quantityItem) {
+        this.idTicket = idTicket;
+        this.idItemDrink = idItemDrink;
+        this.quantityItem = quantityItem;
+    }
 
-	@Column(name = "id_ticket", nullable = false)
-	public int getIdTicket() {
-		return this.idTicket;
-	}
+    @Column(name = "id_ticket", nullable = false)
+    public int getIdTicket() {
+        return this.idTicket;
+    }
 
-	public void setIdTicket(int idTicket) {
-		this.idTicket = idTicket;
-	}
+    public void setIdTicket(int idTicket) {
+        this.idTicket = idTicket;
+    }
 
-	@Column(name = "id_item_drink", nullable = false)
-	public int getIdItemDrink() {
-		return this.idItemDrink;
-	}
+    @Column(name = "id_item_drink", nullable = false)
+    public int getIdItemDrink() {
+        return this.idItemDrink;
+    }
 
-	public void setIdItemDrink(int idItemDrink) {
-		this.idItemDrink = idItemDrink;
-	}
-        @Column(name = "quantity_item")
-	public Integer getQuantityItem() {
-		return this.quantityItem;
-	}
+    public void setIdItemDrink(int idItemDrink) {
+        this.idItemDrink = idItemDrink;
+    }
 
-	public void setQuantityItem(Integer quantityItem) {
-		this.quantityItem = quantityItem;
-	}
+    @Column(name = "quantity_item")
+    public Integer getQuantityItem() {
+        return this.quantityItem;
+    }
 
+    public void setQuantityItem(Integer quantityItem) {
+        this.quantityItem = quantityItem;
+    }
 
-        @Override
-	public boolean equals(Object other) {
-		if ((this == other))
-			return true;
-		if ((other == null))
-			return false;
-		if (!(other instanceof HasdrinkId))
-			return false;
-		HasdrinkId castOther = (HasdrinkId) other;
+    @Override
+    public boolean equals(Object other) {
+        if ((this == other)) {
+            return true;
+        }
+        if ((other == null)) {
+            return false;
+        }
+        if (!(other instanceof HasdrinkId)) {
+            return false;
+        }
+        HasdrinkId castOther = (HasdrinkId) other;
 
-		return (this.getIdTicket() == castOther.getIdTicket()) && (this.getIdItemDrink() == castOther.getIdItemDrink());
-	}
+        return (this.getIdTicket() == castOther.getIdTicket()) && (this.getIdItemDrink() == castOther.getIdItemDrink());
+    }
 
-	public int hashCode() {
-		int result = 17;
+    public int hashCode() {
+        int result = 17;
 
-		result = 37 * result + this.getIdTicket();
-		result = 37 * result + this.getIdItemDrink();
-		return result;
-	}
+        result = 37 * result + this.getIdTicket();
+        result = 37 * result + this.getIdItemDrink();
+        return result;
+    }
 
 }

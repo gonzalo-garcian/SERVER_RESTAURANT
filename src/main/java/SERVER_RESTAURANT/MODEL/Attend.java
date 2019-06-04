@@ -15,25 +15,27 @@ import javax.persistence.Table;
 @Table(name = "attend", catalog = "RESTAURANT")
 public class Attend implements java.io.Serializable {
 
-	private AttendId id;
+    private AttendId id;
 
-	public Attend() {
-	}
+    public Attend() {
+    }
 
-	public Attend(AttendId id) {
-		this.id = id;
-	}
+    public Attend(AttendId id) {
+        this.id = id;
+    }
 
-	@EmbeddedId
+    @EmbeddedId
 
-	@AttributeOverrides({ @AttributeOverride(name = "idTable", column = @Column(name = "id_table", nullable = false)),
-			@AttributeOverride(name = "dniWaiter", column = @Column(name = "dni_waiter", nullable = false, length = 9)) })
-	public AttendId getId() {
-		return this.id;
-	}
+    @AttributeOverrides({
+        @AttributeOverride(name = "idTable", column = @Column(name = "id_table", nullable = false))
+        ,
+			@AttributeOverride(name = "dniWaiter", column = @Column(name = "dni_waiter", nullable = false, length = 9))})
+    public AttendId getId() {
+        return this.id;
+    }
 
-	public void setId(AttendId id) {
-		this.id = id;
-	}
+    public void setId(AttendId id) {
+        this.id = id;
+    }
 
 }
