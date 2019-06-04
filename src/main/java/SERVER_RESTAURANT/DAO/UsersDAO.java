@@ -83,5 +83,17 @@ public class UsersDAO {
         e.printStackTrace();
     }
     }
+    
+    public void delete(Users user){
+        try{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(user);
+            session.getTransaction().commit();
+            session.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+    }
 
 }
