@@ -1,5 +1,5 @@
 package SERVER_RESTAURANT.MODEL;
-// Generated 29-may-2019 16:28:58 by Hibernate Tools 5.1.10.Final
+// Generated 04-jun-2019 22:07:35 by Hibernate Tools 5.1.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,107 +15,102 @@ import javax.persistence.Table;
 @Table(name = "dish", catalog = "RESTAURANT")
 public class Dish implements java.io.Serializable {
 
-    private Integer idItemDish;
-    private float price;
-    private String nameDish;
-    private int quantityStock;
-    private int statusDish;
-    private String descriptionDish;
-    private String dniKitchen;
+	private Integer idItemDish;
+	private float price;
+	private String nameDish;
+	private int quantityStock;
+	private int statusDish;
+	private String descriptionDish;
+	private String dniKitchen;
 
-    public Dish() {
-    }
+	public Dish() {
+	}
 
-    public Dish(float price, String nameDish, int quantityStock, int statusDish) {
-        this.price = price;
-        this.nameDish = nameDish;
-        this.quantityStock = quantityStock;
-        this.statusDish = statusDish;
-    }
+	public Dish(float price, String nameDish, int quantityStock, int statusDish) {
+		this.price = price;
+		this.nameDish = nameDish;
+		this.quantityStock = quantityStock;
+		this.statusDish = statusDish;
+	}
 
-    public Dish(float price, String nameDish, int quantityStock, int statusDish, String descriptionDish,
-            String dniKitchen) {
-        this.price = price;
-        this.nameDish = nameDish;
-        this.quantityStock = quantityStock;
-        this.statusDish = statusDish;
-        this.descriptionDish = descriptionDish;
-        this.dniKitchen = dniKitchen;
-    }
+	public Dish(float price, String nameDish, int quantityStock, int statusDish, String descriptionDish,
+			String dniKitchen) {
+		this.price = price;
+		this.nameDish = nameDish;
+		this.quantityStock = quantityStock;
+		this.statusDish = statusDish;
+		this.descriptionDish = descriptionDish;
+		this.dniKitchen = dniKitchen;
+	}
 
     public Dish(String nameDish, float price, int quantityStock, String descriptionDish, String dniKitchen) {
-
-        this.nameDish = nameDish;
-        this.price = price;
-        this.quantityStock = quantityStock;
-        this.descriptionDish = descriptionDish;
-        this.dniKitchen = dniKitchen;
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
-    @Column(name = "id_item_dish", unique = true, nullable = false)
-    public Integer getIdItemDish() {
-        return this.idItemDish;
-    }
+	@Column(name = "id_item_dish", unique = true, nullable = false)
+	public Integer getIdItemDish() {
+		return this.idItemDish;
+	}
 
-    public void setIdItemDish(Integer idItemDish) {
-        this.idItemDish = idItemDish;
-    }
+	public void setIdItemDish(Integer idItemDish) {
+		this.idItemDish = idItemDish;
+	}
 
-    @Column(name = "price", nullable = false, precision = 12, scale = 0)
-    public float getPrice() {
-        return this.price;
-    }
+	@Column(name = "price", nullable = false, precision = 12, scale = 0)
+	public float getPrice() {
+		return this.price;
+	}
 
-    public void setPrice(float price) {
-        this.price = price;
-    }
+	public void setPrice(float price) {
+		this.price = price;
+	}
 
-    @Column(name = "name_dish", nullable = false)
-    public String getNameDish() {
-        return this.nameDish;
-    }
+	@Column(name = "name_dish", nullable = false)
+	public String getNameDish() {
+		return this.nameDish;
+	}
 
-    public void setNameDish(String nameDish) {
-        this.nameDish = nameDish;
-    }
+	public void setNameDish(String nameDish) {
+		this.nameDish = nameDish;
+	}
 
-    @Column(name = "quantity_stock", nullable = false)
-    public int getQuantityStock() {
-        return this.quantityStock;
-    }
+	@Column(name = "quantity_stock", nullable = false)
+	public int getQuantityStock() {
+		return this.quantityStock;
+	}
 
-    public void setQuantityStock(int quantityStock) {
-        this.quantityStock = quantityStock;
-    }
+	public void setQuantityStock(int quantityStock) {
+		this.quantityStock = quantityStock;
+	}
 
-    @Column(name = "status_dish", nullable = false)
-    public int getStatusDish() {
-        return this.statusDish;
-    }
+	@Column(name = "status_dish", nullable = false)
+	public int getStatusDish() {
+		return this.statusDish;
+	}
 
-    public void setStatusDish(int statusDish) {
-        this.statusDish = statusDish;
-    }
+	public void setStatusDish(int statusDish) {
+		this.statusDish = statusDish;
+	}
 
-    @Column(name = "description_dish")
-    public String getDescriptionDish() {
-        return this.descriptionDish;
-    }
+	@Column(name = "description_dish")
+	public String getDescriptionDish() {
+		return this.descriptionDish;
+	}
 
-    public void setDescriptionDish(String descriptionDish) {
-        this.descriptionDish = descriptionDish;
-    }
+	public void setDescriptionDish(String descriptionDish) {
+		this.descriptionDish = descriptionDish;
+	}
 
-    @Column(name = "dni_kitchen", length = 9)
-    public String getDniKitchen() {
-        return this.dniKitchen;
-    }
+	@Column(name = "dni_kitchen", length = 9)
+	public String getDniKitchen() {
+		return this.dniKitchen;
+	}
 
-    public void setDniKitchen(String dniKitchen) {
-        this.dniKitchen = dniKitchen;
-    }
+	public void setDniKitchen(String dniKitchen) {
+		this.dniKitchen = dniKitchen;
+	}
 
 }

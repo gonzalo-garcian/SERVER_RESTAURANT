@@ -1,5 +1,5 @@
 package SERVER_RESTAURANT.MODEL;
-// Generated 29-may-2019 16:28:58 by Hibernate Tools 5.1.10.Final
+// Generated 04-jun-2019 22:07:35 by Hibernate Tools 5.1.10.Final
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -15,42 +15,40 @@ import javax.persistence.Table;
 @Table(name = "hasdrink", catalog = "RESTAURANT")
 public class Hasdrink implements java.io.Serializable {
 
-    private HasdrinkId id;
-    private Integer quantityItem;
+	private HasdrinkId id;
+	private Integer quantityItem;
 
-    public Hasdrink() {
-    }
+	public Hasdrink() {
+	}
 
-    public Hasdrink(HasdrinkId id) {
-        this.id = id;
-    }
+	public Hasdrink(HasdrinkId id) {
+		this.id = id;
+	}
 
-    public Hasdrink(HasdrinkId id, Integer quantityItem) {
-        this.id = id;
-        this.quantityItem = quantityItem;
-    }
+	public Hasdrink(HasdrinkId id, Integer quantityItem) {
+		this.id = id;
+		this.quantityItem = quantityItem;
+	}
 
-    @EmbeddedId
+	@EmbeddedId
 
-    @AttributeOverrides({
-        @AttributeOverride(name = "idTicket", column = @Column(name = "id_ticket", nullable = false))
-        ,
-			@AttributeOverride(name = "idItemDrink", column = @Column(name = "id_item_drink", nullable = false))})
-    public HasdrinkId getId() {
-        return this.id;
-    }
+	@AttributeOverrides({ @AttributeOverride(name = "idTicket", column = @Column(name = "id_ticket", nullable = false)),
+			@AttributeOverride(name = "idItemDrink", column = @Column(name = "id_item_drink", nullable = false)) })
+	public HasdrinkId getId() {
+		return this.id;
+	}
 
-    public void setId(HasdrinkId id) {
-        this.id = id;
-    }
+	public void setId(HasdrinkId id) {
+		this.id = id;
+	}
 
-    @Column(name = "quantity_item")
-    public Integer getQuantityItem() {
-        return this.quantityItem;
-    }
+	@Column(name = "quantity_item")
+	public Integer getQuantityItem() {
+		return this.quantityItem;
+	}
 
-    public void setQuantityItem(Integer quantityItem) {
-        this.quantityItem = quantityItem;
-    }
+	public void setQuantityItem(Integer quantityItem) {
+		this.quantityItem = quantityItem;
+	}
 
 }

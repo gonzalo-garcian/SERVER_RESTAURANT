@@ -1,5 +1,5 @@
 package SERVER_RESTAURANT.MODEL;
-// Generated 29-may-2019 16:28:58 by Hibernate Tools 5.1.10.Final
+// Generated 04-jun-2019 22:07:35 by Hibernate Tools 5.1.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
@@ -10,67 +10,53 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class HasdishId implements java.io.Serializable {
 
-    private int idTicket;
-    private int idItemDish;
-    private int quantityItem;
+	private int idTicket;
+	private int idItemDish;
 
-    public HasdishId() {
-    }
+	public HasdishId() {
+	}
 
-    public HasdishId(int idTicket, int idItemDish, int quantityItem) {
-        this.idTicket = idTicket;
-        this.idItemDish = idItemDish;
-        this.quantityItem = quantityItem;
-    }
+	public HasdishId(int idTicket, int idItemDish) {
+		this.idTicket = idTicket;
+		this.idItemDish = idItemDish;
+	}
 
-    @Column(name = "id_ticket", nullable = false)
-    public int getIdTicket() {
-        return this.idTicket;
-    }
+	@Column(name = "id_ticket", nullable = false)
+	public int getIdTicket() {
+		return this.idTicket;
+	}
 
-    public void setIdTicket(int idTicket) {
-        this.idTicket = idTicket;
-    }
+	public void setIdTicket(int idTicket) {
+		this.idTicket = idTicket;
+	}
 
-    @Column(name = "id_item_dish", nullable = false)
-    public int getIdItemDish() {
-        return this.idItemDish;
-    }
+	@Column(name = "id_item_dish", nullable = false)
+	public int getIdItemDish() {
+		return this.idItemDish;
+	}
 
-    public void setIdItemDish(int quantityItem) {
-        this.idItemDish = idItemDish;
-    }
+	public void setIdItemDish(int idItemDish) {
+		this.idItemDish = idItemDish;
+	}
 
-    @Column(name = "quantity_item")
-    public Integer getQuantityItem() {
-        return this.quantityItem;
-    }
+	public boolean equals(Object other) {
+		if ((this == other))
+			return true;
+		if ((other == null))
+			return false;
+		if (!(other instanceof HasdishId))
+			return false;
+		HasdishId castOther = (HasdishId) other;
 
-    public void setQuantityItem(Integer quantityItem) {
-        this.quantityItem = quantityItem;
-    }
+		return (this.getIdTicket() == castOther.getIdTicket()) && (this.getIdItemDish() == castOther.getIdItemDish());
+	}
 
-    public boolean equals(Object other) {
-        if ((this == other)) {
-            return true;
-        }
-        if ((other == null)) {
-            return false;
-        }
-        if (!(other instanceof HasdishId)) {
-            return false;
-        }
-        HasdishId castOther = (HasdishId) other;
+	public int hashCode() {
+		int result = 17;
 
-        return (this.getIdTicket() == castOther.getIdTicket()) && (this.getIdItemDish() == castOther.getIdItemDish());
-    }
-
-    public int hashCode() {
-        int result = 17;
-
-        result = 37 * result + this.getIdTicket();
-        result = 37 * result + this.getIdItemDish();
-        return result;
-    }
+		result = 37 * result + this.getIdTicket();
+		result = 37 * result + this.getIdItemDish();
+		return result;
+	}
 
 }

@@ -1,8 +1,10 @@
 package SERVER_RESTAURANT.MODEL;
-// Generated 29-may-2019 16:28:58 by Hibernate Tools 5.1.10.Final
+// Generated 04-jun-2019 22:07:35 by Hibernate Tools 5.1.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -13,50 +15,46 @@ import javax.persistence.Table;
 @Table(name = "dinner_table", catalog = "RESTAURANT")
 public class DinnerTable implements java.io.Serializable {
 
-    private int idTable;
-    private String locationTable;
-    private Integer numberDinersTable;
+	private Integer idTable;
+	private String locationTable;
+	private Integer numberDinersTable;
 
-    public DinnerTable() {
-    }
+	public DinnerTable() {
+	}
 
-    public DinnerTable(int idTable) {
-        this.idTable = idTable;
-    }
+	public DinnerTable(String locationTable, Integer numberDinersTable) {
+		this.locationTable = locationTable;
+		this.numberDinersTable = numberDinersTable;
+	}
 
-    public DinnerTable(int idTable, String locationTable, Integer numberDinersTable) {
-        this.idTable = idTable;
-        this.locationTable = locationTable;
-        this.numberDinersTable = numberDinersTable;
-    }
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
-    @Id
+	@Column(name = "id_table", unique = true, nullable = false)
+	public Integer getIdTable() {
+		return this.idTable;
+	}
 
-    @Column(name = "id_table", unique = true, nullable = false)
-    public int getIdTable() {
-        return this.idTable;
-    }
+	public void setIdTable(Integer idTable) {
+		this.idTable = idTable;
+	}
 
-    public void setIdTable(int idTable) {
-        this.idTable = idTable;
-    }
+	@Column(name = "location_table")
+	public String getLocationTable() {
+		return this.locationTable;
+	}
 
-    @Column(name = "location_table")
-    public String getLocationTable() {
-        return this.locationTable;
-    }
+	public void setLocationTable(String locationTable) {
+		this.locationTable = locationTable;
+	}
 
-    public void setLocationTable(String locationTable) {
-        this.locationTable = locationTable;
-    }
+	@Column(name = "number_diners_table")
+	public Integer getNumberDinersTable() {
+		return this.numberDinersTable;
+	}
 
-    @Column(name = "number_diners_table")
-    public Integer getNumberDinersTable() {
-        return this.numberDinersTable;
-    }
-
-    public void setNumberDinersTable(Integer numberDinersTable) {
-        this.numberDinersTable = numberDinersTable;
-    }
+	public void setNumberDinersTable(Integer numberDinersTable) {
+		this.numberDinersTable = numberDinersTable;
+	}
 
 }

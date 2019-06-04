@@ -1,5 +1,5 @@
 package SERVER_RESTAURANT.MODEL;
-// Generated 29-may-2019 16:28:58 by Hibernate Tools 5.1.10.Final
+// Generated 04-jun-2019 22:07:35 by Hibernate Tools 5.1.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,46 +15,46 @@ import javax.persistence.Table;
 @Table(name = "ticket", catalog = "RESTAURANT")
 public class Ticket implements java.io.Serializable {
 
-    private Integer idTicket;
-    private Float totalPrice;
-    private Integer idTable;
+	private Integer idTicket;
+	private Float totalPrice;
+	private Integer idTable;
 
-    public Ticket() {
-    }
+	public Ticket() {
+	}
 
-    public Ticket(Float totalPrice, Integer idTable) {
-        this.totalPrice = totalPrice;
-        this.idTable = idTable;
-    }
+	public Ticket(Float totalPrice, Integer idTable) {
+		this.totalPrice = totalPrice;
+		this.idTable = idTable;
+	}
 
-    @Id
-    @GeneratedValue(strategy = IDENTITY)
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
-    @Column(name = "id_ticket", unique = true, nullable = false)
-    public Integer getIdTicket() {
-        return this.idTicket;
-    }
+	@Column(name = "id_ticket", unique = true, nullable = false)
+	public Integer getIdTicket() {
+		return this.idTicket;
+	}
 
-    public void setIdTicket(Integer idTicket) {
-        this.idTicket = idTicket;
-    }
+	public void setIdTicket(Integer idTicket) {
+		this.idTicket = idTicket;
+	}
 
-    @Column(name = "total_price", precision = 12, scale = 0)
-    public Float getTotalPrice() {
-        return this.totalPrice;
-    }
+	@Column(name = "total_price", precision = 12, scale = 0)
+	public Float getTotalPrice() {
+		return this.totalPrice;
+	}
 
-    public void setTotalPrice(Float totalPrice) {
-        this.totalPrice = totalPrice;
-    }
+	public void setTotalPrice(Float totalPrice) {
+		this.totalPrice = totalPrice;
+	}
 
-    @Column(name = "id_table")
-    public Integer getIdTable() {
-        return this.idTable;
-    }
+	@Column(name = "id_table")
+	public Integer getIdTable() {
+		return this.idTable;
+	}
 
-    public void setIdTable(Integer idTable) {
-        this.idTable = idTable;
-    }
+	public void setIdTable(Integer idTable) {
+		this.idTable = idTable;
+	}
 
 }

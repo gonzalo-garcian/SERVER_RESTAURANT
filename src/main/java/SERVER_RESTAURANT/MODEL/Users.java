@@ -1,5 +1,5 @@
 package SERVER_RESTAURANT.MODEL;
-// Generated 29-may-2019 16:28:58 by Hibernate Tools 5.1.10.Final
+// Generated 04-jun-2019 22:07:35 by Hibernate Tools 5.1.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -13,87 +13,87 @@ import javax.persistence.Table;
 @Table(name = "users", catalog = "RESTAURANT")
 public class Users implements java.io.Serializable {
 
-    private String dni;
-    private String firstName;
-    private String surnames;
-    private String phoneNumber;
-    private String accessKey;
-    private int kind;
+	private String dni;
+	private String firstName;
+	private String surnames;
+	private String phoneNumber;
+	private String accessKey;
+	private int kind;
 
-    public Users() {
-    }
+	public Users() {
+	}
 
-    public Users(String dni, String firstName, String surnames, String accessKey, int kind) {
-        this.dni = dni;
-        this.firstName = firstName;
-        this.surnames = surnames;
-        this.accessKey = accessKey;
-        this.kind = kind;
-    }
+	public Users(String dni, String firstName, String surnames, String accessKey, int kind) {
+		this.dni = dni;
+		this.firstName = firstName;
+		this.surnames = surnames;
+		this.accessKey = accessKey;
+		this.kind = kind;
+	}
 
-    public Users(String dni, String firstName, String surnames, String phoneNumber, String accessKey, int kind) {
-        this.dni = dni;
-        this.firstName = firstName;
-        this.surnames = surnames;
-        this.phoneNumber = phoneNumber;
-        this.accessKey = accessKey;
-        this.kind = kind;
-    }
+	public Users(String dni, String firstName, String surnames, String phoneNumber, String accessKey, int kind) {
+		this.dni = dni;
+		this.firstName = firstName;
+		this.surnames = surnames;
+		this.phoneNumber = phoneNumber;
+		this.accessKey = accessKey;
+		this.kind = kind;
+	}
 
-    @Id
+	@Id
 
-    @Column(name = "dni", unique = true, nullable = false, length = 9)
-    public String getDni() {
-        return this.dni;
-    }
+	@Column(name = "dni", unique = true, nullable = false, length = 9)
+	public String getDni() {
+		return this.dni;
+	}
 
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
+	public void setDni(String dni) {
+		this.dni = dni;
+	}
 
-    @Column(name = "first_name", nullable = false)
-    public String getFirstName() {
-        return this.firstName;
-    }
+	@Column(name = "first_name", nullable = false)
+	public String getFirstName() {
+		return this.firstName;
+	}
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
 
-    @Column(name = "surnames", nullable = false)
-    public String getSurnames() {
-        return this.surnames;
-    }
+	@Column(name = "surnames", nullable = false)
+	public String getSurnames() {
+		return this.surnames;
+	}
 
-    public void setSurnames(String surnames) {
-        this.surnames = surnames;
-    }
+	public void setSurnames(String surnames) {
+		this.surnames = surnames;
+	}
 
-    @Column(name = "phone_number", length = 9)
-    public String getPhoneNumber() {
-        return this.phoneNumber;
-    }
+	@Column(name = "phone_number", length = 9)
+	public String getPhoneNumber() {
+		return this.phoneNumber;
+	}
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 
-    @Column(name = "access_key", nullable = false)
-    public String getAccessKey() {
-        return this.accessKey;
-    }
+	@Column(name = "access_key", nullable = false)
+	public String getAccessKey() {
+		return this.accessKey;
+	}
 
-    public void setAccessKey(String accessKey) {
-        this.accessKey = accessKey;
-    }
+	public void setAccessKey(String accessKey) {
+		this.accessKey = accessKey;
+	}
 
-    @Column(name = "kind", nullable = false)
-    public int getKind() {
-        return this.kind;
-    }
+	@Column(name = "kind", nullable = false)
+	public int getKind() {
+		return this.kind;
+	}
 
-    public void setKind(int kind) {
-        this.kind = kind;
-    }
+	public void setKind(int kind) {
+		this.kind = kind;
+	}
 
 }
