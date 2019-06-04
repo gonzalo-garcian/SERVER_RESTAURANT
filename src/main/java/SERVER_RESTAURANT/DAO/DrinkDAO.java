@@ -70,4 +70,15 @@ public class DrinkDAO {
         return exists;
     }
 
+    public void delete(Drink drink) {
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.delete(drink);
+            session.getTransaction().commit();
+            session.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

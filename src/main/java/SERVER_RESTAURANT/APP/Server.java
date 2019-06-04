@@ -214,6 +214,11 @@ public class Server extends Thread {
                 int quantityStock = dis.readInt();
                 updateDrink(idItemDrink, quantityStock);
             }
+            if (option == 11) {
+                
+            	int idItemDrink = dis.readInt();
+                deleteDrink(idItemDrink);
+            }
 
             sk.close();
             dis.close();
@@ -379,6 +384,18 @@ public class Server extends Thread {
             drinkDAO.update(drink);
         }
 
+    }
+    
+    private void deleteDrink(int idItemDrink) {
+
+        DrinkDAO drinkDAO = new DrinkDAO();
+        Drink drink = new Drink();
+
+        if (drinkDAO.exists(idItemDrink)) {
+
+            drink = drinkDAO.select(idItemDrink);
+            drinkDAO.delete(drink);
+        }
     }
 
     private static void saveKey(Key key, String fileName) throws Exception {
