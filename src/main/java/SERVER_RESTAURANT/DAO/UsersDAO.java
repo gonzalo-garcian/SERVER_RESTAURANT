@@ -59,5 +59,17 @@ public class UsersDAO {
         }
         return listUser;
     }
+    
+    public void update(Users user){
+        try{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.update(user);
+            session.getTransaction().commit();
+            session.close();
+        }catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }
