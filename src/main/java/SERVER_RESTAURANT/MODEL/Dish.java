@@ -42,6 +42,16 @@ public class Dish implements java.io.Serializable {
 		this.descriptionDish = descriptionDish;
 		this.dniKitchen = dniKitchen;
 	}
+      
+        public Dish(String nameDish, float price, int quantityStock, String descriptionDish, String dniKitchen){
+        
+            this.nameDish = nameDish;
+            this.price = price;
+            this.quantityStock = quantityStock;
+            this.descriptionDish = descriptionDish;
+            this.dniKitchen = dniKitchen;
+        }
+       
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)

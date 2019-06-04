@@ -29,12 +29,11 @@ public class DishDAO {
 	        session.close();
 		} 
 		catch (Exception e) {
-			
 					
 		}
 		return dish;
 	}
-    
+  
     public List<Dish> select() {
 		List<Dish> listEntrenador = null;
 		try {		
@@ -81,6 +80,19 @@ public class DishDAO {
 		return exists;
 	}
     
+    public void insert(Dish dish) {
+		try {		
+			Session session = HibernateUtil.getSessionFactory().openSession();
+	        session.beginTransaction(); 
+	        session.save(dish);
+	        session.getTransaction().commit();
+	        session.close();
+		} 
+		catch (Exception e) {
+			e.printStackTrace();			
+		}
+	}
+  
     public void delete(Dish dish) {
 		try {		
 			Session session = HibernateUtil.getSessionFactory().openSession();

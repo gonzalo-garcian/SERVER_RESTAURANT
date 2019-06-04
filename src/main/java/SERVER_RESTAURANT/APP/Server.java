@@ -162,6 +162,17 @@ public class Server extends Thread {
 				int idItemDish = dis.readInt();
 				deleteDish(idItemDish);
 			}
+                        if(option == 6){
+                        
+                            String nameDish = dis.readUTF();
+                            float price = dis.readFloat();
+                            int quantityStock = dis.readInt();
+                            String descriptionDish = dis.readUTF();
+                            String dniKitchen = dis.readUTF();
+                        
+                            insertDish(nameDish,price,quantityStock,descriptionDish,dniKitchen);
+                        
+                        }
 
 			sk.close();
 			dis.close();
@@ -202,6 +213,7 @@ public class Server extends Thread {
 		return false;
 	}
 
+        // TODO LO QUE ES DE DISH EMPIEZA
 	private List<Dish> getDishList() {
 		Consola consola = Consola.getSingletonInstance();
 		DishDAO dishDAO = new DishDAO();
@@ -251,9 +263,24 @@ public class Server extends Thread {
 			dish = dishDAO.select(idItemDish);
 			dishDAO.delete(dish);
 		}
-		
 	}
-
+        
+        public void insertDish(String nameDish, float price, int quantityStock, String descriptionDish, String dniKitchen) {
+		DishDAO dishDAO = new DishDAO();
+                UsersDAO usersDAO = new UsersDAO();
+		Dish dish;
+		
+		if (!usersDAO.exists(dniKitchen)) {
+			consola.escribirSL("ERROR: Ya existe un dish con ese nombre");
+		} else {
+                    dish = new Dish(nameDish,price,quantityStock,descriptionDish,dniKitchen);
+                    dishDAO.insert(dish);
+		}
+	}
+        
+//TODO LO QUE ES DE DISH ACABA
+        
+        
 	private static void saveKey(Key key, String fileName) throws Exception {
 		byte[] publicKeyBytes = key.getEncoded();
 		FileOutputStream fos = new FileOutputStream(fileName);
