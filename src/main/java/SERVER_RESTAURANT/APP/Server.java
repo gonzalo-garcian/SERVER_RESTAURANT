@@ -223,6 +223,15 @@ public class Server extends Thread {
                 }
 
             }
+            if(option == 9){
+            
+                String nameDish = dis.readUTF();
+                float price = dis.readFloat();
+                int quantityStock = dis.readInt();
+                String descriptionDish = dis.readUTF();
+
+                insertDrink(nameDish, price, quantityStock, descriptionDish);
+            }
             if (option == 10) {
                 int idItemDrink = dis.readInt();
                 int quantityStock = dis.readInt();
@@ -414,6 +423,14 @@ public class Server extends Thread {
             drink = drinkDAO.select(idItemDrink);
             drinkDAO.delete(drink);
         }
+    }
+    
+    public void insertDrink(String nameDish, float price, int quantityStock, String descriptionDish) {
+        DrinkDAO dishDAO = new DrinkDAO();
+        Drink drink;
+        
+        drink = new Drink(nameDish, price, quantityStock, descriptionDish);
+        dishDAO.insert(drink);
     }
     
     private List<Users> selectAllUsers(){

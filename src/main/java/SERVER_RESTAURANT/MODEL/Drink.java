@@ -40,6 +40,13 @@ public class Drink implements java.io.Serializable {
 		this.descriptionDrink = descriptionDrink;
 	}
 
+    public Drink(String nameDrink, float price, int quantityStock, String descriptionDrink) {
+    	this.price = price;
+		this.nameDrink = nameDrink;
+		this.quantityStock = quantityStock;
+		this.descriptionDrink = descriptionDrink;
+    }
+
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
 
