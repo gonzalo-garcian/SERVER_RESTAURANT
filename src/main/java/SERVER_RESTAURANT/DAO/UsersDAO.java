@@ -134,3 +134,16 @@ public class UsersDAO {
 //            drinkDAO.delete(drink);
 //        }
 //    }
+
+//    public void insertDish(String nameDish, float price, int quantityStock, String descriptionDish, String dniKitchen) {
+//        DishDAO dishDAO = new DishDAO();
+//        UsersDAO usersDAO = new UsersDAO();
+//        Dish dish;
+//
+//        if (!usersDAO.exists(dniKitchen)) {
+//            consola.escribirSL("ERROR: Ya existe un dish con ese nombre");
+//        } else {
+//            dish = new Dish(nameDish, price, quantityStock, descriptionDish, dniKitchen);
+//            dishDAO.insert(dish);
+//        }
+//    }

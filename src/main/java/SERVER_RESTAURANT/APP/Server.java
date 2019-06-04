@@ -265,6 +265,9 @@ public class Server extends Thread {
                 Users user = new Users(dni, firstName, surnames, phoneNumber, accessKey, kind);
                 updateUser(user);
             }
+            if(option == 15){
+                
+            }
 
             sk.close();
             dis.close();
@@ -490,6 +493,14 @@ public class Server extends Thread {
             Users user = new Users();
             user = uDAO.select(dni);
             uDAO.delete(user);
+        }
+    }
+    private void insertUser(Users user){
+        UsersDAO uDAO = new UsersDAO();
+        if(!uDAO.exists(user.getDni())){
+            uDAO.insert(user);
+        }else{
+            consola.escribirSL("ERROR: ESE USUARIO YA EXISTE");
         }
     }
 
