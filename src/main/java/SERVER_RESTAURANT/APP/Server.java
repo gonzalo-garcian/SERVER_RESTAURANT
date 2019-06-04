@@ -146,6 +146,7 @@ public class Server extends Thread {
 				// Enviar objetos con un for .
 				System.out.print("Estoy en la opcion 3");
 				List<Ticket> ticketList = getTicketList();
+                                
 
 				System.out.print(ticketList.size());
 				dos.writeInt(ticketList.size());
@@ -178,6 +179,16 @@ public class Server extends Thread {
                         
                             insertDish(nameDish,price,quantityStock,descriptionDish,dniKitchen);
                         
+                        }
+                        
+                        if(option == 7){
+                            
+                            int idTicket = dis.readInt();
+                            List<Dish> hasDishList = getDishListFromTicket(idTicket);
+                            List<Drink> hasDrinkList = getDrinkListFromTicket(idTicket);
+                            
+                            
+                            
                         }
 
 			sk.close();
