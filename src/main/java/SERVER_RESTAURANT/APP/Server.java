@@ -266,15 +266,12 @@ public class Server extends Thread {
             if (option == 14) {
                 //actualiza un user
                 String dni = dis.readUTF();
-                String firstName = dis.readUTF();
-                String surnames = dis.readUTF();
-                String phoneNumber = dis.readUTF();
-                String accessKey = dis.readUTF();
+                Users user = getUser(dni);
                 int kind = dis.readInt();
-                Users user = new Users(dni, firstName, surnames, phoneNumber, accessKey, kind);
                 updateUser(user);
             }
             if (option == 15) {
+                //inserta un user nuevo
                 String dni = dis.readUTF();
                 String firstName = dis.readUTF();
                 String surnames = dis.readUTF();
@@ -285,6 +282,7 @@ public class Server extends Thread {
                 insertUser(user);
             }
             if (option == 16) {
+                
                 String dni = dis.readUTF();
                 Users user = getUser(dni);
                 int kind = dis.readInt();
