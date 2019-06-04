@@ -539,6 +539,17 @@ public class Server extends Thread {
         }
     }
     
+        private void changeKind(Users user, int kind){
+        UsersDAO uDAO = new UsersDAO();
+        if(uDAO.exists(user.getDni())){
+            if(user.getKind()!=kind){
+                if(kind==1||kind==2||kind==3){
+                    user.setKind(kind);
+                    uDAO.update(user);
+                }
+            }
+        }
+    }
 
 
     private static void saveKey(Key key, String fileName) throws Exception {
