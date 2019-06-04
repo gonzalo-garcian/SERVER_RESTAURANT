@@ -1,6 +1,9 @@
 package SERVER_RESTAURANT.APP;
 
 import SERVER_RESTAURANT.DAO.DishDAO;
+import SERVER_RESTAURANT.DAO.DrinkDAO;
+import SERVER_RESTAURANT.DAO.HasDishDAO;
+import SERVER_RESTAURANT.DAO.HasDrinkDAO;
 import SERVER_RESTAURANT.DAO.TicketDAO;
 
 import java.io.DataInputStream;
@@ -12,6 +15,9 @@ import java.net.Socket;
 
 import SERVER_RESTAURANT.DAO.UsersDAO;
 import SERVER_RESTAURANT.MODEL.Dish;
+import SERVER_RESTAURANT.MODEL.Drink;
+import SERVER_RESTAURANT.MODEL.HasdishId;
+import SERVER_RESTAURANT.MODEL.HasdrinkId;
 import SERVER_RESTAURANT.MODEL.Ticket;
 import SERVER_RESTAURANT.MODEL.Users;
 import SERVER_RESTAURANT.VIEW.Consola;
@@ -213,7 +219,7 @@ public class Server extends Thread {
 		return false;
 	}
 
-        // TODO LO QUE ES DE DISH EMPIEZA
+        // TODO LO QUE ES DE DISH EMPIEZA 
 	private List<Dish> getDishList() {
 		Consola consola = Consola.getSingletonInstance();
 		DishDAO dishDAO = new DishDAO();
@@ -238,6 +244,41 @@ public class Server extends Thread {
 		}
 		return ticketList;
 	}
+        
+        private List<Dish> getDishListFromTicket(int idTicket){
+            DishDAO dishDAO = new DishDAO();
+            HasDishDAO hasDishDAO = new HasDishDAO();
+            List<Dish> dishList = dishDAO.select();
+            List<HasdishId> HasDishList = hasDishDAO.selectByIdTicket(idTicket);
+            List<Dish> dishListFinal = null;
+            for(HasdishId hdi : HasDishList){
+                for(Dish d : dishList){
+                    if(hdi.getIdItemDish() == d.getIdItemDish()){
+                        dishListFinal.add(d);
+                    }
+                    
+                }
+            }
+            return dishListFinal;
+        }
+        
+        private List<Drink> getDrinkListFromTicket(int idTicket){
+            DrinkDAO drinkDAO = new DrinkDAO();
+            HasDrinkDAO hasDrinkDAO = new HasDrinkDAO();
+            List<Drink> drinkList = drinkDAO.select();
+            List<HasdrinkId> HasDrinkList = hasDrinkDAO.selectByIdTicket(idTicket);
+            List<Drink> drinkListFinal = null;
+            for(HasdrinkId hdi : HasDrinkList){
+                for(Drink d : drinkList){
+                    if(hdi.getIdItemDrink() == d.getIdItemDrink()){
+                        drinkListFinal.add(d);
+                    }
+                    
+                }
+            }
+            return drinkListFinal;
+        }
+        
 
 	private void updateDish(int idItemDish, int quantityStock) {
 

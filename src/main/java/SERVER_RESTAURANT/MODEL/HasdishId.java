@@ -12,13 +12,15 @@ public class HasdishId implements java.io.Serializable {
 
 	private int idTicket;
 	private int idItemDish;
+        private int quantityItem;
 
 	public HasdishId() {
 	}
 
-	public HasdishId(int idTicket, int idItemDish) {
+	public HasdishId(int idTicket, int idItemDish, int quantityItem) {
 		this.idTicket = idTicket;
 		this.idItemDish = idItemDish;
+                this.quantityItem = quantityItem;
 	}
 
 	@Column(name = "id_ticket", nullable = false)
@@ -35,8 +37,16 @@ public class HasdishId implements java.io.Serializable {
 		return this.idItemDish;
 	}
 
-	public void setIdItemDish(int idItemDish) {
+	public void setIdItemDish(int quantityItem) {
 		this.idItemDish = idItemDish;
+	}
+        @Column(name = "quantity_item")
+	public Integer getQuantityItem() {
+		return this.quantityItem;
+	}
+
+	public void setQuantityItem(Integer quantityItem) {
+		this.quantityItem = quantityItem;
 	}
 
 	public boolean equals(Object other) {

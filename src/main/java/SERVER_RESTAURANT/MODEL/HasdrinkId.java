@@ -12,13 +12,15 @@ public class HasdrinkId implements java.io.Serializable {
 
 	private int idTicket;
 	private int idItemDrink;
+        private int quantityItem;
 
 	public HasdrinkId() {
 	}
 
-	public HasdrinkId(int idTicket, int idItemDrink) {
+	public HasdrinkId(int idTicket, int idItemDrink, int quantityItem) {
 		this.idTicket = idTicket;
 		this.idItemDrink = idItemDrink;
+                this.quantityItem = quantityItem;
 	}
 
 	@Column(name = "id_ticket", nullable = false)
@@ -38,7 +40,17 @@ public class HasdrinkId implements java.io.Serializable {
 	public void setIdItemDrink(int idItemDrink) {
 		this.idItemDrink = idItemDrink;
 	}
+        @Column(name = "quantity_item")
+	public Integer getQuantityItem() {
+		return this.quantityItem;
+	}
 
+	public void setQuantityItem(Integer quantityItem) {
+		this.quantityItem = quantityItem;
+	}
+
+
+        @Override
 	public boolean equals(Object other) {
 		if ((this == other))
 			return true;

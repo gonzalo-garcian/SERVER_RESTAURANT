@@ -5,7 +5,6 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
-import SERVER_RESTAURANT.MODEL.HasdishId;
 import SERVER_RESTAURANT.MODEL.HasdrinkId;
 import SERVER_RESTAURANT.UTIL.HibernateUtil;
 
