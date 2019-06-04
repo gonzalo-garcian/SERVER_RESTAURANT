@@ -223,8 +223,8 @@ public class Server extends Thread {
                 }
 
             }
-            if(option == 9){
-            
+            if (option == 9) {
+
                 String nameDish = dis.readUTF();
                 float price = dis.readFloat();
                 int quantityStock = dis.readInt();
@@ -263,7 +263,7 @@ public class Server extends Thread {
                 String dniUser = dis.readUTF();
                 deleteUser(dniUser);
             }
-            if(option == 14){
+            if (option == 14) {
                 //actualiza un user
                 String dni = dis.readUTF();
                 String firstName = dis.readUTF();
@@ -274,7 +274,7 @@ public class Server extends Thread {
                 Users user = new Users(dni, firstName, surnames, phoneNumber, accessKey, kind);
                 updateUser(user);
             }
-            if(option == 15){
+            if (option == 15) {
                 String dni = dis.readUTF();
                 String firstName = dis.readUTF();
                 String surnames = dis.readUTF();
@@ -284,8 +284,11 @@ public class Server extends Thread {
                 Users user = new Users(dni, firstName, surnames, phoneNumber, accessKey, kind);
                 insertUser(user);
             }
-            if(option == 16){
-                
+            if (option == 16) {
+                String dni = dis.readUTF();
+                Users user = getUser(dni);
+                int kind = dis.readInt();
+                changeKind(user, kind);
             }
 
             sk.close();
@@ -469,16 +472,16 @@ public class Server extends Thread {
             drinkDAO.delete(drink);
         }
     }
-    
+
     public void insertDrink(String nameDish, float price, int quantityStock, String descriptionDish) {
         DrinkDAO dishDAO = new DrinkDAO();
         Drink drink;
-        
+
         drink = new Drink(nameDish, price, quantityStock, descriptionDish);
         dishDAO.insert(drink);
     }
-    
-    private List<Users> selectAllUsers(){
+
+    private List<Users> selectAllUsers() {
         Consola consola = Consola.getSingletonInstance();
         UsersDAO uDAO = new UsersDAO();
         List<Users> lUsers = uDAO.getAll();
@@ -522,35 +525,44 @@ public class Server extends Thread {
             uDAO.delete(user);
         }
     }
-    private void insertUser(Users user){
+
+    private void insertUser(Users user) {
         UsersDAO uDAO = new UsersDAO();
-        if(!uDAO.exists(user.getDni())){
+        if (!uDAO.exists(user.getDni())) {
             uDAO.insert(user);
-        }else{
+        } else {
             consola.escribirSL("ERROR: ESE USUARIO YA EXISTE");
         }
     }
-    
-    private void updateUserDirecto(Users user){
+
+    private void updateUserDirecto(Users user) {
         UsersDAO uDAO = new UsersDAO();
-        if(uDAO.exists(user.getDni())){
-           uDAO.update(user);
-           consola.escribirSL("Usuario actualizado con DNI: "+user.getDni());
+        if (uDAO.exists(user.getDni())) {
+            uDAO.update(user);
+            consola.escribirSL("Usuario actualizado con DNI: " + user.getDni());
         }
     }
-    
-        private void changeKind(Users user, int kind){
+
+    private void changeKind(Users user, int kind) {
         UsersDAO uDAO = new UsersDAO();
-        if(uDAO.exists(user.getDni())){
-            if(user.getKind()!=kind){
-                if(kind==1||kind==2||kind==3){
+        if (uDAO.exists(user.getDni())) {
+            if (user.getKind() != kind) {
+                if (kind == 1 || kind == 2 || kind == 3) {
                     user.setKind(kind);
                     uDAO.update(user);
                 }
             }
         }
     }
-
+    
+    private Users getUser(String dni){
+        UsersDAO uDAO = new UsersDAO();
+        Users user = new Users();
+        if(uDAO.exists(dni)){
+            user = uDAO.select(dni);
+        }
+        return user;
+    }
 
     private static void saveKey(Key key, String fileName) throws Exception {
         byte[] publicKeyBytes = key.getEncoded();
