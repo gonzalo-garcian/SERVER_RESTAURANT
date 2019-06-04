@@ -233,13 +233,13 @@ public class Server extends Thread {
                 int idItemDrink = dis.readInt();
                 deleteDrink(idItemDrink);
             }
-            if (option == 12){
+            if (option == 12) {
                 //devuelve una lista con todos los usuarios
                 List<Users> usersList = selectAllUsers();
-                if (usersList != null){
+                if (usersList != null) {
                     System.out.println(usersList.size());
                     dos.writeInt(usersList.size());
-                    
+
                     for (int i = 0; i < usersList.size(); i++) {
                         dos.writeUTF(usersList.get(i).getDni());
                         dos.writeUTF(usersList.get(i).getFirstName());
@@ -249,12 +249,22 @@ public class Server extends Thread {
                     }
                 }
             }
-            if (option ==13){
+            if (option == 13) {
                 //elimina un usuario de la BBDD
                 String dniUser = dis.readUTF();
                 deleteUser(dniUser);
             }
-            
+            if(option == 14){
+                //actualiza un user
+                String dni = dis.readUTF();
+                String firstName = dis.readUTF();
+                String surnames = dis.readUTF();
+                String phoneNumber = dis.readUTF();
+                String accessKey = dis.readUTF();
+                int kind = dis.readInt();
+                Users user = new Users(dni, firstName, surnames, phoneNumber, accessKey, kind);
+                updateUser(user);
+            }
 
             sk.close();
             dis.close();
@@ -437,47 +447,51 @@ public class Server extends Thread {
             drinkDAO.delete(drink);
         }
     }
-    
-    private List<Users> selectAllUsers(){
+
+    private List<Users> selectAllUsers() {
         Consola consola = Consola.getSingletonInstance();
         UsersDAO uDAO = new UsersDAO();
         List<Users> lUsers = uDAO.getAll();
-        if(lUsers!=null){
-            for (Users user : lUsers){
-                consola.escribirSL("[Nombre: "+user.getFirstName()+", DNI: "+user.getDni()+"]");
+        if (lUsers != null) {
+            for (Users user : lUsers) {
+                consola.escribirSL("[Nombre: " + user.getFirstName() + ", DNI: " + user.getDni() + "]");
             }
         }
         return lUsers;
     }
-    
-    private void updateUser(Users user){
+
+    private void updateUser(Users user) {
         UsersDAO uDAO = new UsersDAO();
         Users usu = new Users();
-        if(uDAO.exists(user.getDni())){
+        if (uDAO.exists(user.getDni())) {
             usu = uDAO.select(user.getDni());
-            if(usu.getAccessKey()!=user.getAccessKey())
+            if (usu.getAccessKey() != user.getAccessKey()) {
                 usu.setAccessKey(user.getAccessKey());
-            if(usu.getFirstName()!=user.getFirstName())
+            }
+            if (usu.getFirstName() != user.getFirstName()) {
                 usu.setFirstName(user.getFirstName());
-            if(usu.getKind()!=user.getKind())
+            }
+            if (usu.getKind() != user.getKind()) {
                 usu.setKind(user.getKind());
-            if(usu.getPhoneNumber()!= user.getPhoneNumber())
+            }
+            if (usu.getPhoneNumber() != user.getPhoneNumber()) {
                 usu.setPhoneNumber(user.getPhoneNumber());
-            if(usu.getSurnames()!= user.getPhoneNumber())
+            }
+            if (usu.getSurnames() != user.getPhoneNumber()) {
                 usu.setSurnames(usu.getSurnames());
+            }
             uDAO.update(user);
         }
     }
-    
-    private void deleteUser(String dni){
+
+    private void deleteUser(String dni) {
         UsersDAO uDAO = new UsersDAO();
-        if(uDAO.exists(dni)){
+        if (uDAO.exists(dni)) {
             Users user = new Users();
             user = uDAO.select(dni);
             uDAO.delete(user);
         }
     }
-    
 
     private static void saveKey(Key key, String fileName) throws Exception {
         byte[] publicKeyBytes = key.getEncoded();
