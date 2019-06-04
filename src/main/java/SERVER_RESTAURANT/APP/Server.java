@@ -415,6 +415,19 @@ public class Server extends Thread {
             drinkDAO.delete(drink);
         }
     }
+    
+    private List<Users> selectAllUsers(){
+        Consola consola = Consola.getSingletonInstance();
+        UsersDAO uDAO = new UsersDAO();
+        List<Users> lUsers = uDAO.getAll();
+        if(lUsers!=null){
+            for (Users user : lUsers){
+                consola.escribirSL("[Nombre: "+user.getFirstName()+", DNI: "+user.getDni()+"]");
+            }
+        }
+        return lUsers;
+    }
+    
 
     private static void saveKey(Key key, String fileName) throws Exception {
         byte[] publicKeyBytes = key.getEncoded();

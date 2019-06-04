@@ -97,3 +97,15 @@ public class UsersDAO {
     }
 
 }
+
+//    private List<Drink> getDrinkList() {
+//        Consola consola = Consola.getSingletonInstance();
+//        DrinkDAO drinkDAO = new DrinkDAO();
+//        List<Drink> drinkList = drinkDAO.select();
+//
+//        consola.escribirSL("Listado de platos (" + drinkList.size() + ")");
+//        for (Drink dish : drinkList) {
+//            consola.escribirSL("[Nombre: " + dish.getNameDrink() + ", aspecto: " + dish.getDescriptionDrink() + "]");
+//        }
+//        return drinkList;
+//    }
