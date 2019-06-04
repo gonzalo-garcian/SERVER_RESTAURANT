@@ -447,6 +447,15 @@ public class Server extends Thread {
         }
     }
     
+    private void deleteUser(String dni){
+        UsersDAO uDAO = new UsersDAO();
+        if(uDAO.exists(dni)){
+            Users user = new Users();
+            user = uDAO.select(dni);
+            uDAO.delete(user);
+        }
+    }
+    
 
     private static void saveKey(Key key, String fileName) throws Exception {
         byte[] publicKeyBytes = key.getEncoded();

@@ -123,3 +123,14 @@ public class UsersDAO {
 //        }
 //
 //    }
+//    private void deleteDrink(int idItemDrink) {
+//
+//        DrinkDAO drinkDAO = new DrinkDAO();
+//        Drink drink = new Drink();
+//
+//        if (drinkDAO.exists(idItemDrink)) {
+//
+//            drink = drinkDAO.select(idItemDrink);
+//            drinkDAO.delete(drink);
+//        }
+//    }
