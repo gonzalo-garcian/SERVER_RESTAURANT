@@ -158,6 +158,10 @@ public class Server extends Thread {
 				updateDish(idItemDish,quantityStock);
 
 			}
+			if(option == 5) {
+				int idItemDish = dis.readInt();
+				deleteDish(idItemDish);
+			}
 
 			sk.close();
 			dis.close();
@@ -195,9 +199,7 @@ public class Server extends Thread {
 				return true;
 			}
 		}
-
 		return false;
-
 	}
 
 	private List<Dish> getDishList() {
@@ -209,9 +211,7 @@ public class Server extends Thread {
 		for (Dish dish : dishList) {
 			consola.escribirSL("[Nombre: " + dish.getNameDish() + ", aspecto: " + dish.getDescriptionDish() + "]");
 		}
-
 		return dishList;
-
 	}
 
 	private List<Ticket> getTicketList() {
@@ -237,6 +237,19 @@ public class Server extends Thread {
 			dish = dishDAO.select(idItemDish);
 			dish.setQuantityStock(quantityStock);
 			dishDAO.update(dish);
+		}
+		
+	}
+	
+	private void deleteDish(int idItemDish) {
+
+		DishDAO dishDAO = new DishDAO();
+		Dish dish = new Dish();
+
+		if (dishDAO.exists(idItemDish)) {
+
+			dish = dishDAO.select(idItemDish);
+			dishDAO.delete(dish);
 		}
 		
 	}

@@ -80,4 +80,17 @@ public class DishDAO {
 		}
 		return exists;
 	}
+    
+    public void delete(Dish dish) {
+		try {		
+			Session session = HibernateUtil.getSessionFactory().openSession();
+	        session.beginTransaction(); 
+	        session.delete(dish);
+	        session.getTransaction().commit();
+	        session.close();
+		} 
+		catch (Exception e) {
+			e.printStackTrace();			
+		}
+	}
 }
