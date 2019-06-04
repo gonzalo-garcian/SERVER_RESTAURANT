@@ -428,6 +428,25 @@ public class Server extends Thread {
         return lUsers;
     }
     
+    private void updateUser(Users user){
+        UsersDAO uDAO = new UsersDAO();
+        Users usu = new Users();
+        if(uDAO.exists(user.getDni())){
+            usu = uDAO.select(user.getDni());
+            if(usu.getAccessKey()!=user.getAccessKey())
+                usu.setAccessKey(user.getAccessKey());
+            if(usu.getFirstName()!=user.getFirstName())
+                usu.setFirstName(user.getFirstName());
+            if(usu.getKind()!=user.getKind())
+                usu.setKind(user.getKind());
+            if(usu.getPhoneNumber()!= user.getPhoneNumber())
+                usu.setPhoneNumber(user.getPhoneNumber());
+            if(usu.getSurnames()!= user.getPhoneNumber())
+                usu.setSurnames(usu.getSurnames());
+            uDAO.update(user);
+        }
+    }
+    
 
     private static void saveKey(Key key, String fileName) throws Exception {
         byte[] publicKeyBytes = key.getEncoded();

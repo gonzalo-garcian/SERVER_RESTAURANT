@@ -109,3 +109,17 @@ public class UsersDAO {
 //        }
 //        return drinkList;
 //    }
+
+//    private void updateDrink(int idItemDrink, int quantityStock) {
+//
+//        DrinkDAO drinkDAO = new DrinkDAO();
+//        Drink drink = new Drink();
+//
+//        if (drinkDAO.exists(idItemDrink)) {
+//
+//            drink = drinkDAO.select(idItemDrink);
+//            drink.setQuantityStock(quantityStock);
+//            drinkDAO.update(drink);
+//        }
+//
+//    }
