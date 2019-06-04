@@ -183,10 +183,24 @@ public class Server extends Thread {
             if (option == 7) {
 
                 int idTicket = dis.readInt();
-                List<Dish> hasDishList = getDishListFromTicket(idTicket);
-                List<Drink> hasDrinkList = getDrinkListFromTicket(idTicket);
+                List<Dish> hasDishList = getDishListFromTicket(1);
+                //List<Drink> hasDrinkList = getDrinkListFromTicket(1);
+                String ticket = "Ticket con ID : " + idTicket + "\n";
+
+                for (Dish d : hasDishList) {
+
+                    ticket = ticket + d.getNameDish();
+                    ticket = ticket + "  " + d.getPrice() + "€\n";
+                }
+
+                //for(Drink d : hasDrinkList) {
+                //ticket = ticket + d.getNameDrink();
+                //ticket = ticket + " " + d.getPrice() +  "€\n";
+                //}
+                System.out.println(ticket);
 
             }
+
             if (option == 8) {
 
                 // Enviar objetos con un for .
@@ -215,8 +229,8 @@ public class Server extends Thread {
                 updateDrink(idItemDrink, quantityStock);
             }
             if (option == 11) {
-                
-            	int idItemDrink = dis.readInt();
+
+                int idItemDrink = dis.readInt();
                 deleteDrink(idItemDrink);
             }
 
@@ -285,21 +299,25 @@ public class Server extends Thread {
         return ticketList;
     }
 
+    @SuppressWarnings("null")
     private List<Dish> getDishListFromTicket(int idTicket) {
         DishDAO dishDAO = new DishDAO();
         HasDishDAO hasDishDAO = new HasDishDAO();
         List<Dish> dishList = dishDAO.select();
         List<HasdishId> HasDishList = hasDishDAO.selectByIdTicket(idTicket);
         List<Dish> dishListFinal = null;
-        for (HasdishId hdi : HasDishList) {
-            for (Dish d : dishList) {
-                if (hdi.getIdItemDish() == d.getIdItemDish()) {
-                    dishListFinal.add(d);
-                }
 
-            }
-        }
-        return dishListFinal;
+        return dishList;
+        //for (HasdishId hdi : HasDishList) {
+        //for (Dish d : dishList) {
+        //if (hdi.getIdItemDish() == d.getIdItemDish()) {
+        //dishListFinal.add(d);
+        //}
+
+        //	return dishListFinal;
+        //	}
+        //}
+        //	return null;
     }
 
     private List<Drink> getDrinkListFromTicket(int idTicket) {
@@ -385,7 +403,7 @@ public class Server extends Thread {
         }
 
     }
-    
+
     private void deleteDrink(int idItemDrink) {
 
         DrinkDAO drinkDAO = new DrinkDAO();
