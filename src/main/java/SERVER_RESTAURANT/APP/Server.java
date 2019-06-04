@@ -284,6 +284,9 @@ public class Server extends Thread {
                 Users user = new Users(dni, firstName, surnames, phoneNumber, accessKey, kind);
                 insertUser(user);
             }
+            if(option == 16){
+                
+            }
 
             sk.close();
             dis.close();
@@ -527,6 +530,16 @@ public class Server extends Thread {
             consola.escribirSL("ERROR: ESE USUARIO YA EXISTE");
         }
     }
+    
+    private void updateUserDirecto(Users user){
+        UsersDAO uDAO = new UsersDAO();
+        if(uDAO.exists(user.getDni())){
+           uDAO.update(user);
+           consola.escribirSL("Usuario actualizado con DNI: "+user.getDni());
+        }
+    }
+    
+
 
     private static void saveKey(Key key, String fileName) throws Exception {
         byte[] publicKeyBytes = key.getEncoded();
