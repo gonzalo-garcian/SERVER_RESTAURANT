@@ -233,6 +233,21 @@ public class Server extends Thread {
                 int idItemDrink = dis.readInt();
                 deleteDrink(idItemDrink);
             }
+            if (option == 12){
+                List<Users> usersList = selectAllUsers();
+                if (usersList != null){
+                    System.out.println(usersList.size());
+                    dos.writeInt(usersList.size());
+                    
+                    for (int i = 0; i < usersList.size(); i++) {
+                        dos.writeUTF(usersList.get(i).getDni());
+                        dos.writeUTF(usersList.get(i).getFirstName());
+                        dos.writeUTF(usersList.get(i).getSurnames());
+                        dos.writeUTF(usersList.get(i).getPhoneNumber());
+                        dos.writeInt(usersList.get(i).getKind());
+                    }
+                }
+            }
 
             sk.close();
             dis.close();
