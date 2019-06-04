@@ -81,4 +81,16 @@ public class DrinkDAO {
             e.printStackTrace();
         }
     }
+    
+     public void insert(Drink drink) {
+        try {
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            session.beginTransaction();
+            session.save(drink);
+            session.getTransaction().commit();
+            session.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
