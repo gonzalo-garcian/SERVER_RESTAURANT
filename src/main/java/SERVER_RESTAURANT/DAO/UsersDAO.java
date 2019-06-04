@@ -71,5 +71,17 @@ public class UsersDAO {
             e.printStackTrace();
         }
     }
+    
+    public void insert(Users user){
+        try{
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(user);
+        session.getTransaction().commit();
+        session.close();
+    } catch(Exception e){
+        e.printStackTrace();
+    }
+    }
 
 }
