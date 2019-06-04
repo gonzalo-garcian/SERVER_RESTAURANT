@@ -282,7 +282,7 @@ public class Server extends Thread {
                 insertUser(user);
             }
             if (option == 16) {
-                
+                //actualiza el kind de un usuario
                 String dni = dis.readUTF();
                 Users user = getUser(dni);
                 int kind = dis.readInt();
