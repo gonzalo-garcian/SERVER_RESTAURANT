@@ -46,5 +46,18 @@ public class UsersDAO {
         }
         return exists;
     }
+    
+    public List<Users> getAll(){
+        List<Users> listUser = null;
+        try{
+            Session session = HibernateUtil.getSessionFactory().openSession();
+            Query q = session.createQuery("From Ticket");
+            listUser = q.list();
+            session.close();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return listUser;
+    }
 
 }
