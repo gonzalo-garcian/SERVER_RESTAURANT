@@ -1,5 +1,6 @@
 package SERVER_RESTAURANT.APP;
 
+import SERVER_RESTAURANT.DAO.DinnerTableDAO;
 import SERVER_RESTAURANT.DAO.DishDAO;
 import SERVER_RESTAURANT.DAO.DrinkDAO;
 import SERVER_RESTAURANT.DAO.HasDishDAO;
@@ -14,6 +15,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 
 import SERVER_RESTAURANT.DAO.UsersDAO;
+import SERVER_RESTAURANT.MODEL.DinnerTable;
 import SERVER_RESTAURANT.MODEL.Dish;
 import SERVER_RESTAURANT.MODEL.Drink;
 import SERVER_RESTAURANT.MODEL.HasdishId;
@@ -296,6 +298,22 @@ public class Server extends Thread {
                 dos.writeUTF(user.getPhoneNumber());
                 dos.writeInt(user.getKind());
             }
+            if (option == 18) {
+                
+                List<DinnerTable> dinnerTableList = getDinnerTable();
+                if (dinnerTableList != null) {
+                    System.out.println(dinnerTableList.size());
+                    dos.writeInt(dinnerTableList.size());
+
+                    for (int i = 0; i < dinnerTableList.size(); i++) {
+                        
+                        dos.writeInt(dinnerTableList.get(i).getIdTable());
+                        dos.writeUTF(dinnerTableList.get(i).getLocationTable());
+                        dos.writeInt(dinnerTableList.get(i).getNumberDinersTable());
+                    }
+                }
+                
+            }
 
             sk.close();
             dis.close();
@@ -317,6 +335,14 @@ public class Server extends Thread {
         } catch (Exception ex) {
             Logger.getLogger(Server.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+    
+    private List<DinnerTable> getDinnerTable(){
+        
+        DinnerTableDAO dinnerTableDAO = new DinnerTableDAO();
+        List<DinnerTable> dinnerTableList = dinnerTableDAO.select();
+    
+         return dinnerTableList;   
     }
 
     private boolean validateLogin(String dni, String password) {
