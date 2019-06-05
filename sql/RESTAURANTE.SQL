@@ -110,6 +110,7 @@ INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitche
 INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("6.30","Amanida d'algues amb salsa de cirera",200," ","43721530G");
 INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("3.50","Amanida de Tofu",200," ","43721530G");
 INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("4.90","Tofu amb alvocat salsa de soja i Wasabi",200,"","43721530G");
+
 INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("5.30","Tofu amb butashabu i Kimchi",200,"","43721530G");
 INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("6.50","Torikara",200,"Karaague de pollastre","43721530G");
 INSERT INTO DISH (price, name_dish, quantity_stock, description_dish, dni_kitchen) VALUES ("6.90","Toripon",200,"Karaague de pollastre amb salsa ponzu i nap daikon","43721530G");
@@ -152,14 +153,34 @@ insert into dinner_table(location_table, number_diners_table) VALUES ("Terraza",
 insert into dinner_table(location_table, number_diners_table) VALUES ("Terraza", 2);
 insert into dinner_table(location_table, number_diners_table) VALUES ("Terraza", 2);
 
-insert into ticket(total_price, id_table) VALUES (50,1); 
-insert into ticket(total_price, id_table) VALUES (80,2); 
-insert into ticket(total_price, id_table) VALUES (120,1); 
-insert into ticket(total_price, id_table) VALUES (30,5); 
+insert into ticket(total_price, id_table) VALUES (43.3,1); 
+insert into ticket(total_price, id_table) VALUES (50,2); 
+insert into ticket(total_price, id_table) VALUES (41.9,3); 
+insert into ticket(total_price, id_table) VALUES (125.8,4); 
+insert into ticket(total_price, id_table) VALUES (15.2,3); 
+insert into ticket(total_price, id_table) VALUES (27,5); 
+insert into ticket(total_price, id_table) VALUES (2.9,6);
 
-insert into hasdish values(4,3,2);
+insert into hasdish values(1,3,3);
+insert into hasdish values(1,8,1);
+insert into hasdish values(1,12,2);
+insert into hasdrink values(1,4,3);
+insert into hasdish values(2,3,2);
 insert into hasdish value(2,4,4);
-insert into hasdrink values(2,4,5);
+insert into hasdrink values(2,6,5);
+insert into hasdish values(3,17,1);
+insert into hasdish value(3,16,2);
+insert into hasdrink values(3,1,1);
+insert into hasdish values(4,13,4);
+insert into hasdish value(4,7,2);
+insert into hasdish values(4,17,1);
+insert into hasdish value(4,4,2);
+insert into hasdish value(4,2,3);
+insert into hasdrink values(4,4,5); 
+insert into hasdrink values(4,5,2);
+insert into hasdrink values(4,2,1);
+insert into hasdish values(5,13,1);
+insert into hasdrink values(5,7,1);
+insert into hasdrink values(6,4,6);
+insert into hasdish values(7,5,1);
 
-insert into hasdish values(1,1,1);
-insert into hasdish value(1,2,1);
