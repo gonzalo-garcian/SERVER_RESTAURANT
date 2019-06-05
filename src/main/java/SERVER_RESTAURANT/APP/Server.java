@@ -288,6 +288,14 @@ public class Server extends Thread {
                 int kind = dis.readInt();
                 changeKind(user, kind);
             }
+            if (option == 17) {
+                String dni = dis.readUTF();
+                Users user = getUser(dni);
+                dos.writeUTF(user.getFirstName());
+                dos.writeUTF(user.getSurnames());
+                dos.writeUTF(user.getPhoneNumber());
+                dos.writeInt(user.getKind());
+            }
 
             sk.close();
             dis.close();
@@ -552,11 +560,11 @@ public class Server extends Thread {
             }
         }
     }
-    
-    private Users getUser(String dni){
+
+    private Users getUser(String dni) {
         UsersDAO uDAO = new UsersDAO();
         Users user = new Users();
-        if(uDAO.exists(dni)){
+        if (uDAO.exists(dni)) {
             user = uDAO.select(dni);
         }
         return user;
