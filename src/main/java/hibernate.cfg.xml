@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE hibernate-configuration PUBLIC
-		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
-		"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<!DOCTYPE hibernate-configuration PUBLIC "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+                                         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="hibernate.connection.password">RestaurantPass</property>
-        <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/RESTAURANT</property>
-        <property name="hibernate.connection.username">RestaurantAdmin</property>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <mapping class="SERVER_RESTAURANT.MODEL.Users" />
-        <mapping class="SERVER_RESTAURANT.MODEL.Dish" />
-        <mapping class="SERVER_RESTAURANT.MODEL.Ticket" />
-        <mapping class="SERVER_RESTAURANT.MODEL.DinnerTable"/>
-        <mapping class="SERVER_RESTAURANT.MODEL.Drink"/>
-    </session-factory>
+ <session-factory>
+  <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+  <property name="hibernate.connection.password">RestaurantPass</property>
+  <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/RESTAURANT</property>
+  <property name="hibernate.connection.username">RestaurantAdmin</property>
+  <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+  <mapping class="SERVER_RESTAURANT.MODEL.Users"/>
+  <mapping class="SERVER_RESTAURANT.MODEL.Dish"/>
+  <mapping class="SERVER_RESTAURANT.MODEL.Ticket"/>
+  <mapping class="SERVER_RESTAURANT.MODEL.DinnerTable"/>
+  <mapping class="SERVER_RESTAURANT.MODEL.Drink"/>
+  <mapping class="SERVER_RESTAURANT.MODEL.Hasdish"/>
+  <mapping class="SERVER_RESTAURANT.MODEL.Hasdrink"/>
+ </session-factory>
 </hibernate-configuration>
