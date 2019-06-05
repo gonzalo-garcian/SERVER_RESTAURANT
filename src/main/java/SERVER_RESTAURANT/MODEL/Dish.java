@@ -44,7 +44,11 @@ public class Dish implements java.io.Serializable {
 	}
 
     public Dish(String nameDish, float price, int quantityStock, String descriptionDish, String dniKitchen) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    	this.price = price;
+		this.nameDish = nameDish;
+		this.quantityStock = quantityStock;
+		this.descriptionDish = descriptionDish;
+		this.dniKitchen = dniKitchen;
     }
 
 	@Id
