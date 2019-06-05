@@ -1,5 +1,5 @@
 package SERVER_RESTAURANT.MODEL;
-// Generated 04-jun-2019 22:07:35 by Hibernate Tools 5.1.10.Final
+// Generated 05-jun-2019 4:27:11 by Hibernate Tools 5.1.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -39,13 +39,13 @@ public class Drink implements java.io.Serializable {
 		this.statusDrink = statusDrink;
 		this.descriptionDrink = descriptionDrink;
 	}
-
-    public Drink(String nameDrink, float price, int quantityStock, String descriptionDrink) {
-    	this.price = price;
+	
+	public Drink(String nameDrink,float price, int quantityStock, String descriptionDrink) {
+		this.price = price;
 		this.nameDrink = nameDrink;
 		this.quantityStock = quantityStock;
 		this.descriptionDrink = descriptionDrink;
-    }
+	}
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)

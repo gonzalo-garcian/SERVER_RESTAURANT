@@ -23,7 +23,8 @@ CREATE TABLE USERS(
 CREATE TABLE DINNER_TABLE(
 	id_table INT(3) AUTO_INCREMENT PRIMARY KEY not null,
 	location_table VARCHAR(255),
-	number_diners_table INT(2)
+	number_diners_table INT(2),
+	occupied BOOLEAN default false
 	);
 	
 CREATE TABLE ATTEND(

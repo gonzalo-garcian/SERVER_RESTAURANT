@@ -1,5 +1,5 @@
 package SERVER_RESTAURANT.MODEL;
-// Generated 04-jun-2019 22:07:35 by Hibernate Tools 5.1.10.Final
+// Generated 05-jun-2019 4:27:11 by Hibernate Tools 5.1.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,13 +18,15 @@ public class DinnerTable implements java.io.Serializable {
 	private Integer idTable;
 	private String locationTable;
 	private Integer numberDinersTable;
+	private Boolean occupied;
 
 	public DinnerTable() {
 	}
 
-	public DinnerTable(String locationTable, Integer numberDinersTable) {
+	public DinnerTable(String locationTable, Integer numberDinersTable, Boolean occupied) {
 		this.locationTable = locationTable;
 		this.numberDinersTable = numberDinersTable;
+		this.occupied = occupied;
 	}
 
 	@Id
@@ -55,6 +57,15 @@ public class DinnerTable implements java.io.Serializable {
 
 	public void setNumberDinersTable(Integer numberDinersTable) {
 		this.numberDinersTable = numberDinersTable;
+	}
+
+	@Column(name = "occupied")
+	public Boolean getOccupied() {
+		return this.occupied;
+	}
+
+	public void setOccupied(Boolean occupied) {
+		this.occupied = occupied;
 	}
 
 }

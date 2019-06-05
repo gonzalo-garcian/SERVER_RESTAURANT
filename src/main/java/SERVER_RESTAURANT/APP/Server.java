@@ -327,6 +327,7 @@ public class Server extends Thread {
                         dos.writeInt(dinnerTableList.get(i).getIdTable());
                         dos.writeUTF(dinnerTableList.get(i).getLocationTable());
                         dos.writeInt(dinnerTableList.get(i).getNumberDinersTable());
+                        dos.writeBoolean(dinnerTableList.get(i).getOccupied());
                     }
                 }
                 

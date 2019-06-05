@@ -1,5 +1,5 @@
 package SERVER_RESTAURANT.MODEL;
-// Generated 04-jun-2019 22:07:35 by Hibernate Tools 5.1.10.Final
+// Generated 05-jun-2019 4:27:11 by Hibernate Tools 5.1.10.Final
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -42,14 +42,21 @@ public class Dish implements java.io.Serializable {
 		this.descriptionDish = descriptionDish;
 		this.dniKitchen = dniKitchen;
 	}
-
-    public Dish(String nameDish, float price, int quantityStock, String descriptionDish, String dniKitchen) {
-    	this.price = price;
-		this.nameDish = nameDish;
-		this.quantityStock = quantityStock;
-		this.descriptionDish = descriptionDish;
-		this.dniKitchen = dniKitchen;
-    }
+	
+	 public Dish(String nameDish, float price, int quantityStock, String descriptionDish, String dniKitchen) {
+	    	this.price = price;
+			this.nameDish = nameDish;
+			this.quantityStock = quantityStock;
+			this.descriptionDish = descriptionDish;
+			this.dniKitchen = dniKitchen;
+	    }
+	 
+	 public Dish(String nameDish, float price, int quantityStock, String descriptionDish) {
+	    	this.price = price;
+			this.nameDish = nameDish;
+			this.quantityStock = quantityStock;
+			this.descriptionDish = descriptionDish;
+	    }
 
 	@Id
 	@GeneratedValue(strategy = IDENTITY)
