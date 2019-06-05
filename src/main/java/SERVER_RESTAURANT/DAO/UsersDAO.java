@@ -51,7 +51,7 @@ public class UsersDAO {
         List<Users> listUser = null;
         try{
             Session session = HibernateUtil.getSessionFactory().openSession();
-            Query q = session.createQuery("From Ticket");
+            Query q = session.createQuery("From Users");
             listUser = q.list();
             session.close();
         } catch (Exception e){
