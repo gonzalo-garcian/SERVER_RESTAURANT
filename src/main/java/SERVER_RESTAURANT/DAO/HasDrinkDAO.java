@@ -1,5 +1,6 @@
 package SERVER_RESTAURANT.DAO;
 
+import SERVER_RESTAURANT.MODEL.Hasdrink;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -10,19 +11,15 @@ import SERVER_RESTAURANT.UTIL.HibernateUtil;
 
 public class HasDrinkDAO {
 
-    public List<HasdrinkId> selectByIdTicket(int idTicket) {
-
-        List<HasdrinkId> hasdrinkList = null;
-        HasdrinkId hasdrinkid = null;
+    public List<Hasdrink> select() {
+        List<Hasdrink> hasdrinkList = null;
         try {
             Session session = HibernateUtil.getSessionFactory().openSession();
-            Query q = session.createQuery("From HasDrink d where d.idTicket=:idTicket");
-            q.setParameter("idTicket", idTicket);
+            Query q = session.createQuery("From Hasdrink");
             hasdrinkList = q.list();
-            hasdrinkid = hasdrinkList.get(0);
             session.close();
         } catch (Exception e) {
-
+        	e.printStackTrace();
         }
         return hasdrinkList;
     }

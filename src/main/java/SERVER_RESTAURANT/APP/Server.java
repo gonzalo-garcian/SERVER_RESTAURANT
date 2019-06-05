@@ -18,7 +18,9 @@ import SERVER_RESTAURANT.DAO.UsersDAO;
 import SERVER_RESTAURANT.MODEL.DinnerTable;
 import SERVER_RESTAURANT.MODEL.Dish;
 import SERVER_RESTAURANT.MODEL.Drink;
+import SERVER_RESTAURANT.MODEL.Hasdish;
 import SERVER_RESTAURANT.MODEL.HasdishId;
+import SERVER_RESTAURANT.MODEL.Hasdrink;
 import SERVER_RESTAURANT.MODEL.HasdrinkId;
 import SERVER_RESTAURANT.MODEL.Ticket;
 import SERVER_RESTAURANT.MODEL.Users;
@@ -34,6 +36,7 @@ import java.security.PublicKey;
 import java.security.spec.KeySpec;
 import java.security.spec.PKCS8EncodedKeySpec;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -184,23 +187,37 @@ public class Server extends Thread {
 
             if (option == 7) {
 
-                int idTicket = dis.readInt();
-                List<Dish> hasDishList = getDishListFromTicket(1);
-                //List<Drink> hasDrinkList = getDrinkListFromTicket(1);
-                String ticket = "Ticket con ID : " + idTicket + "\n";
-
-                for (Dish d : hasDishList) {
-
-                    ticket = ticket + d.getNameDish();
-                    ticket = ticket + "  " + d.getPrice() + "€\n";
-                }
-
-                //for(Drink d : hasDrinkList) {
-                //ticket = ticket + d.getNameDrink();
-                //ticket = ticket + " " + d.getPrice() +  "€\n";
-                //}
-                System.out.println(ticket);
-
+				int idTicket = dis.readInt();
+				System.out.println(idTicket);
+				List<Dish> dishList = getDishListFromTicket(idTicket);
+				List<Drink> drinkList = getDrinkListFromTicket(idTicket);
+				double cantidad = 0;
+				double precioTotal = 0;
+				
+				String ticket = "Ticket con ID : " + idTicket + "\n";
+				ticket = ticket + "Platos : \n";
+				ticket = ticket + "-----------------------------------------------\n";
+				for (Dish d : dishList) {
+					cantidad = getQuantityDish(idTicket, d.getIdItemDish());
+					ticket = ticket + d.getNameDish();
+					ticket = ticket + "  " + d.getPrice() + "â‚¬  ";
+					ticket = ticket + "Cantidad : " + cantidad + "\n";
+					precioTotal = precioTotal + (d.getPrice()*cantidad);
+					
+				}
+				ticket = ticket + "Bebidas : \n";
+				ticket = ticket + "-----------------------------------------------\n";
+				for (Drink d : drinkList) {
+					cantidad = getQuantityDrink(idTicket, d.getIdItemDrink());
+					ticket = ticket + d.getNameDrink();
+					ticket = ticket + " " + d.getPrice() + "â‚¬   ";
+					ticket = ticket + "Cantidad : " + cantidad + "\n";
+					precioTotal = precioTotal + (d.getPrice()*cantidad);
+					}
+				ticket = ticket + "Precio final : " + precioTotal + "â‚¬\n";
+				ticket = ticket + "-----------------------------------------------\n";
+				System.out.println(ticket);
+				dos.writeUTF(ticket);
             }
 
             if (option == 8) {
@@ -387,44 +404,76 @@ public class Server extends Thread {
         }
         return ticketList;
     }
-
-    @SuppressWarnings("null")
-    private List<Dish> getDishListFromTicket(int idTicket) {
-        DishDAO dishDAO = new DishDAO();
-        HasDishDAO hasDishDAO = new HasDishDAO();
-        List<Dish> dishList = dishDAO.select();
-        List<HasdishId> HasDishList = hasDishDAO.selectByIdTicket(idTicket);
-        List<Dish> dishListFinal = null;
-
-        return dishList;
-        //for (HasdishId hdi : HasDishList) {
-        //for (Dish d : dishList) {
-        //if (hdi.getIdItemDish() == d.getIdItemDish()) {
-        //dishListFinal.add(d);
-        //}
-
-        //	return dishListFinal;
-        //	}
-        //}
-        //	return null;
+    
+    private int getQuantityDish(int idTicket, int idDish) {
+		HasDishDAO hasDishDAO = new HasDishDAO();
+		List<Hasdish> hasDishList = hasDishDAO.select();
+		int quantityFinal = 0;
+		for (Hasdish hd : hasDishList) {
+			if ((hd.getId().getIdItemDish() == idDish) && (hd.getId().getIdTicket() == idTicket)) {
+				int quantity = hd.getQuantityItem().intValue();
+				quantityFinal = quantity;
+			}
+		}
+		return quantityFinal;
     }
+
+    
+    private List<Dish> getDishListFromTicket(int idTicket) {
+		DishDAO dishDAO = new DishDAO();
+		HasDishDAO hasDishDAO = new HasDishDAO();
+		List<Dish> dishList = dishDAO.select();
+		List<Dish> dishListEmpty = new ArrayList<Dish>();
+		List<Hasdish> hasDishList = hasDishDAO.select();
+
+		for (Hasdish hd : hasDishList) {
+			if (hd.getId().getIdTicket() == idTicket) {
+				int idDish = hd.getId().getIdItemDish();
+				for (Dish d : dishList) {
+					if (d.getIdItemDish() == idDish) {
+						dishListEmpty.add(d);
+					}
+
+				}
+			}
+		}
+		return dishListEmpty;
+	}
 
     private List<Drink> getDrinkListFromTicket(int idTicket) {
-        DrinkDAO drinkDAO = new DrinkDAO();
-        HasDrinkDAO hasDrinkDAO = new HasDrinkDAO();
-        List<Drink> drinkList = drinkDAO.select();
-        List<HasdrinkId> HasDrinkList = hasDrinkDAO.selectByIdTicket(idTicket);
-        List<Drink> drinkListFinal = null;
-        for (HasdrinkId hdi : HasDrinkList) {
-            for (Drink d : drinkList) {
-                if (hdi.getIdItemDrink() == d.getIdItemDrink()) {
-                    drinkListFinal.add(d);
-                }
+		DrinkDAO drinkDAO = new DrinkDAO();
+		HasDrinkDAO hasDrinkDAO = new HasDrinkDAO();
+		List<Drink> drinkList = drinkDAO.select();
+		List<Drink> drinkListEmpty = new ArrayList<Drink>();
+		List<Hasdrink> hasDrinkList = hasDrinkDAO.select();
 
-            }
-        }
-        return drinkListFinal;
-    }
+		for (Hasdrink hd : hasDrinkList) {
+			if (hd.getId().getIdTicket() == idTicket) {
+				int idDrink = hd.getId().getIdItemDrink();
+
+				for (Drink d : drinkList) {
+					if (d.getIdItemDrink() == idDrink) {
+						drinkListEmpty.add(d);
+					}
+
+				}
+			}
+		}
+		return drinkListEmpty;
+	}
+
+	private int getQuantityDrink(int id_ticket, int id_drink) {
+		HasDrinkDAO hasDrinkDAO = new HasDrinkDAO();
+		List<Hasdrink> hasDrinkList = hasDrinkDAO.select();
+		int quantity = 1;
+
+		for (Hasdrink hd : hasDrinkList) {
+			if ((hd.getId().getIdItemDrink() == id_drink) && (hd.getId().getIdTicket() == id_ticket)) {
+				quantity = hd.getQuantityItem().intValue();
+			}
+		}
+		return quantity;
+	}
 
     private void updateDish(int idItemDish, int quantityStock) {
 
